@@ -8,5 +8,10 @@ module.exports = {
 		const representatives = await axios.get(
 			`https://www.googleapis.com/civicinfo/v2/representatives?key=${API_KEY}&address=${address}}`
 		);
+		req.session.address = {
+			address: req.query.address
+		};
+
+		res.status(200).send(representatives.data);
 	}
 };
