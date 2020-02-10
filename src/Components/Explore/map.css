@@ -1,9 +1,27 @@
+.map_wrapper{
+  transition: 1000ms;
+}
 .map{
-  height: 50vh;
-  width: 90vw;
+  height: 70vh;
+  width: 100vw;
+  transition: 1000ms;
+  /* padding: 0px 25vw; */
+
 }
 
 .state{
   stroke: black;
   fill: white;
+  transition: 300ms;
+}
+
+.county{
+  stroke: black;
+  fill: white;
+  
+}
+
+.state:hover{
+  stroke: black;
+  stroke-width: 3px;
 }
