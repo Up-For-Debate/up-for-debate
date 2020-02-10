@@ -9,7 +9,7 @@ import Landing from "./Components/Landing/Landing";
 import RegisterToVote from "./Components/RegisterToVote/RegisterToVote";
 import RepCard from "./Components/RepCard/RepCard";
 import Representatives from "./Components/Representative/Representatives";
-import SearchInput from "./Components/StateMap/StateMap";
+import SearchInput from "./Components/SearchInput/SearchInput";
 // import StateMap from "./Components/Vote/Vote";
 
 export default (
