@@ -1,0 +1,9 @@
+.map{
+  height: 50vh;
+  width: 90vw;
+}
+
+.state{
+  stroke: black;
+  fill: white;
+}
