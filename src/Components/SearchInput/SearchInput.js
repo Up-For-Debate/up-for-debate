@@ -4,6 +4,11 @@ import {TextField} from '@material-ui/core'
 import {Autocomplete} from '@material-ui/lab'
 import match from 'autosuggest-highlight/match'
 import parse from 'autosuggest-highlight/parse'
+import { withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { getCityState } from '../../redux/addressReducer'
+import { SearchIcon } from '@material-ui/icons'
+
 
 const SearchInput = () => {
   return (
@@ -35,4 +40,8 @@ const SearchInput = () => {
     );
 };
 
-export default SearchInput;
+const mapStateToProps = reduxState => {
+  return reduxState
+}
+
+export default withRouter(connect(mapStateToProps, {getCityState})(SearchInput));
