@@ -1,10 +1,11 @@
 import React from "react";
-import data from '../../assets/states.json'
+import states from '../../assets/states.json'
+import counties from '../../assets/counties.json'
 import Map from './Map.js'
 
 const Explore = () => {
   return <div>Explore
-    <Map data= {data}/>
+    <Map states= {states} counties= {counties}/>
   </div>;
 };
 
