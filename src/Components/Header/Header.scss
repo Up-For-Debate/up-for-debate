@@ -1,0 +1,21 @@
+* {
+  margin: 0;
+  padding: 0%;
+}
+.header-container {
+  height: 5vh;
+  width: 100vw;
+  background-color: rgba(211, 211, 211, 0.5);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Muli", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+.header-home {
+  color: darkgrey;
+}
