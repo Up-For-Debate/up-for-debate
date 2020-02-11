@@ -1,6 +1,4 @@
-.map_wrapper{
-  transition: 1000ms;
-}
+
 .map{
   height: 70vh;
   width: 100vw;
@@ -12,7 +10,10 @@
 .state{
   stroke: black;
   fill: white;
-  transition: 300ms;
+}
+
+.no-display{
+  display: none;
 }
 
 .county{
