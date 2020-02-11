@@ -8,7 +8,6 @@
     ,{"city": "Abilene", "state": "Kansas"}
     ,{"city": "Abingdon", "state": "Virginia"}
     ,{"city": "Abington", "state": "Massachusetts"}
-    ,{"city": "Abington", "state": "Massachusetts"}
     ,{"city": "Absecon", "state": "New Jersey"}
     ,{"city": "Accokeek", "state": "Maryland"}
     ,{"city": "Acton", "state": "Massachusetts"}
@@ -46,7 +45,6 @@
     ,{"city": "Albert Lea", "state": "Minnesota"}
     ,{"city": "Albertville", "state": "Alabama"}
     ,{"city": "Albion", "state": "Michigan"}
-    ,{"city": "Albion", "state": "New York"}
     ,{"city": "Albion", "state": "New York"}
     ,{"city": "Albuquerque", "state": "New Mexico"}
     ,{"city": "Alcoa", "state": "Tennessee"}
@@ -101,7 +99,6 @@
     ,{"city": "Americus", "state": "Georgia"}
     ,{"city": "Ames", "state": "Iowa"}
     ,{"city": "Amesbury", "state": "Massachusetts"}
-    ,{"city": "Amesbury", "state": "Massachusetts"}
     ,{"city": "Amherst", "state": "New Hampshire"}
     ,{"city": "Amherst", "state": "Massachusetts"}
     ,{"city": "Amherst", "state": "Ohio"}
@@ -137,7 +134,6 @@
     ,{"city": "Anniston", "state": "Alabama"}
     ,{"city": "Anoka", "state": "Minnesota"}
     ,{"city": "Ansonia", "state": "Connecticut"}
-    ,{"city": "Ansonia", "state": "Connecticut"}
     ,{"city": "Anthony", "state": "New Mexico"}
     ,{"city": "Antigo", "state": "Wisconsin"}
     ,{"city": "Antioch", "state": "Illinois"}
@@ -168,7 +164,6 @@
     ,{"city": "Ardmore", "state": "Pennsylvania"}
     ,{"city": "Arkadelphia", "state": "Arkansas"}
     ,{"city": "Arkansas City", "state": "Kansas"}
-    ,{"city": "Arlington", "state": "Massachusetts"}
     ,{"city": "Arlington", "state": "Massachusetts"}
     ,{"city": "Arlington", "state": "Texas"}
     ,{"city": "Arlington", "state": "New York"}
@@ -207,7 +202,6 @@
     ,{"city": "Athens", "state": "Ohio"}
     ,{"city": "Athens-Clarke County", "state": "Georgia"}
     ,{"city": "Atherton", "state": "California"}
-    ,{"city": "Athol", "state": "Massachusetts"}
     ,{"city": "Athol", "state": "Massachusetts"}
     ,{"city": "Atkinson", "state": "New Hampshire"}
     ,{"city": "Atlanta", "state": "Georgia"}
@@ -261,7 +255,6 @@
     ,{"city": "Azusa", "state": "California"}
     
   ,{"city": "Babylon", "state": "New York"}
-  ,{"city": "Babylon", "state": "New York"}
   ,{"city": "Back Mountain", "state": "Pennsylvania"}
   ,{"city": "Bacliff", "state": "Texas"}
   ,{"city": "Bailey’s Crossroads", "state": "Virginia"}
@@ -290,8 +283,6 @@
   ,{"city": "Barnhart", "state": "Missouri"}
   ,{"city": "Barnstable Town", "state": "Massachusetts"}
   ,{"city": "Barre", "state": "Vermont"}
-  ,{"city": "Barre", "state": "Vermont"}
-  ,{"city": "Barrington", "state": "Rhode Island"}
   ,{"city": "Barrington", "state": "Rhode Island"}
   ,{"city": "Barrington", "state": "New Jersey"}
   ,{"city": "Barrington", "state": "New Hampshire"}
@@ -396,11 +387,9 @@
   ,{"city": "Bellwood", "state": "Illinois"}
   ,{"city": "Belmar", "state": "New Jersey"}
   ,{"city": "Belmont", "state": "Massachusetts"}
-  ,{"city": "Belmont", "state": "Massachusetts"}
   ,{"city": "Belmont", "state": "New Hampshire"}
   ,{"city": "Belmont", "state": "North Carolina"}
   ,{"city": "Belmont", "state": "California"}
-  ,{"city": "Beloit", "state": "Wisconsin"}
   ,{"city": "Beloit", "state": "Wisconsin"}
   ,{"city": "Belpre", "state": "Ohio"}
   ,{"city": "Belton", "state": "Missouri"}
@@ -413,7 +402,6 @@
   ,{"city": "Bend", "state": "Oregon"}
   ,{"city": "Benicia", "state": "California"}
   ,{"city": "Bennettsville", "state": "South Carolina"}
-  ,{"city": "Bennington", "state": "Vermont"}
   ,{"city": "Bennington", "state": "Vermont"}
   ,{"city": "Bennsville", "state": "Maryland"}
   ,{"city": "Bensenville", "state": "Illinois"}
@@ -442,7 +430,6 @@
   ,{"city": "Bessemer", "state": "Alabama"}
   ,{"city": "Bethalto", "state": "Illinois"}
   ,{"city": "Bethany", "state": "Oklahoma"}
-  ,{"city": "Bethel", "state": "Connecticut"}
   ,{"city": "Bethel", "state": "Connecticut"}
   ,{"city": "Bethel Park", "state": "Pennsylvania"}
   ,{"city": "Bethesda", "state": "Maryland"}
@@ -555,12 +542,10 @@
   ,{"city": "Bradley", "state": "Illinois"}
   ,{"city": "Brainerd", "state": "Minnesota"}
   ,{"city": "Braintree", "state": "Massachusetts"}
-  ,{"city": "Braintree", "state": "Massachusetts"}
   ,{"city": "Brandon", "state": "Mississippi"}
   ,{"city": "Brandon", "state": "Florida"}
   ,{"city": "Branford", "state": "Connecticut"}
   ,{"city": "Branson", "state": "Missouri"}
-  ,{"city": "Brattleboro", "state": "Vermont"}
   ,{"city": "Brattleboro", "state": "Vermont"}
   ,{"city": "Brawley", "state": "California"}
   ,{"city": "Brazil", "state": "Indiana"}
@@ -583,22 +568,18 @@
   ,{"city": "Bridge City", "state": "Texas"}
   ,{"city": "Bridgeport", "state": "West Virginia"}
   ,{"city": "Bridgeport", "state": "Connecticut"}
-  ,{"city": "Bridgeport", "state": "Connecticut"}
   ,{"city": "Bridgeport", "state": "Michigan"}
   ,{"city": "Bridgeton", "state": "Missouri"}
   ,{"city": "Bridgeton", "state": "New Jersey"}
   ,{"city": "Bridgetown North", "state": "Ohio"}
   ,{"city": "Bridgeview", "state": "Illinois"}
   ,{"city": "Bridgewater", "state": "Massachusetts"}
-  ,{"city": "Bridgewater", "state": "Massachusetts"}
   ,{"city": "Brier", "state": "Washington"}
   ,{"city": "Brigantine", "state": "New Jersey"}
   ,{"city": "Brigham City", "state": "Utah"}
   ,{"city": "Brighton", "state": "Michigan"}
   ,{"city": "Brighton", "state": "New York"}
-  ,{"city": "Brighton", "state": "New York"}
   ,{"city": "Brighton", "state": "Colorado"}
-  ,{"city": "Bristol", "state": "Connecticut"}
   ,{"city": "Bristol", "state": "Connecticut"}
   ,{"city": "Bristol", "state": "Rhode Island"}
   ,{"city": "Bristol", "state": "Tennessee"}
@@ -616,12 +597,10 @@
   ,{"city": "Brookfield", "state": "Connecticut"}
   ,{"city": "Brookfield", "state": "Illinois"}
   ,{"city": "Brookfield", "state": "Wisconsin"}
-  ,{"city": "Brookfield", "state": "Wisconsin"}
   ,{"city": "Brookhaven", "state": "Pennsylvania"}
   ,{"city": "Brookhaven", "state": "New York"}
   ,{"city": "Brookhaven", "state": "Mississippi"}
   ,{"city": "Brookings", "state": "South Dakota"}
-  ,{"city": "Brookline", "state": "Massachusetts"}
   ,{"city": "Brookline", "state": "Massachusetts"}
   ,{"city": "Brooklyn", "state": "Ohio"}
   ,{"city": "Brooklyn", "state": "Connecticut"}
@@ -641,7 +620,6 @@
   ,{"city": "Brownsville", "state": "Tennessee"}
   ,{"city": "Brownsville-Bawcomville", "state": "Louisiana"}
   ,{"city": "Brownwood", "state": "Texas"}
-  ,{"city": "Brunswick", "state": "Maine"}
   ,{"city": "Brunswick", "state": "Maine"}
   ,{"city": "Brunswick", "state": "Georgia"}
   ,{"city": "Brunswick", "state": "Ohio"}
@@ -677,11 +655,9 @@
   ,{"city": "Burlington", "state": "Iowa"}
   ,{"city": "Burlington", "state": "North Carolina"}
   ,{"city": "Burlington", "state": "Massachusetts"}
-  ,{"city": "Burlington", "state": "Massachusetts"}
   ,{"city": "Burlington", "state": "New Jersey"}
   ,{"city": "Burlington", "state": "Vermont"}
   ,{"city": "Burlington", "state": "Washington"}
-  ,{"city": "Burlington", "state": "Wisconsin"}
   ,{"city": "Burlington", "state": "Wisconsin"}
   ,{"city": "Burnsville", "state": "Minnesota"}
   ,{"city": "Burr Ridge", "state": "Illinois"}
@@ -736,7 +712,6 @@
   ,{"city": "Campbell", "state": "California"}
   ,{"city": "Campbell", "state": "Ohio"}
   ,{"city": "Campbellsville", "state": "Kentucky"}
-  ,{"city": "Canandaigua", "state": "New York"}
   ,{"city": "Canandaigua", "state": "New York"}
   ,{"city": "Canby", "state": "Oregon"}
   ,{"city": "Candler-McAfee", "state": "Georgia"}
@@ -875,7 +850,6 @@
   ,{"city": "Chattanooga", "state": "Tennessee"}
   ,{"city": "Cheat Lake", "state": "West Virginia"}
   ,{"city": "Cheektowaga", "state": "New York"}
-  ,{"city": "Cheektowaga", "state": "New York"}
   ,{"city": "Chehalis", "state": "Washington"}
   ,{"city": "Chelmsford", "state": "Massachusetts"}
   ,{"city": "Chelsea", "state": "Massachusetts"}
@@ -985,7 +959,6 @@
   ,{"city": "Clinton", "state": "Maryland"}
   ,{"city": "Clinton", "state": "Michigan"}
   ,{"city": "Clinton", "state": "Massachusetts"}
-  ,{"city": "Clinton", "state": "Massachusetts"}
   ,{"city": "Clinton", "state": "Connecticut"}
   ,{"city": "Clinton", "state": "Illinois"}
   ,{"city": "Clinton", "state": "Oklahoma"}
@@ -1041,7 +1014,6 @@
   ,{"city": "Colonial Heights", "state": "Virginia"}
   ,{"city": "Colonial Heights", "state": "Tennessee"}
   ,{"city": "Colonial Park", "state": "Pennsylvania"}
-  ,{"city": "Colonie", "state": "New York"}
   ,{"city": "Colonie", "state": "New York"}
   ,{"city": "Colorado Springs", "state": "Colorado"}
   ,{"city": "Colton", "state": "California"}
@@ -1109,7 +1081,6 @@
   ,{"city": "Corinth", "state": "Texas"}
   ,{"city": "Cornelius", "state": "Oregon"}
   ,{"city": "Cornelius", "state": "North Carolina"}
-  ,{"city": "Corning", "state": "New York"}
   ,{"city": "Corning", "state": "New York"}
   ,{"city": "Corning", "state": "California"}
   ,{"city": "Cornwall", "state": "New York"}
