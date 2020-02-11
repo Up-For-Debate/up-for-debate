@@ -13,16 +13,16 @@ import SearchInput from "./Components/SearchInput/SearchInput";
 // import StateMap from "./Components/Vote/Vote";
 
 export default (
-  <Switch>
-    <Route exact path="/" component={Landing} />
-    <Route path="/repcard" component={RepCard} />
-    {/* <Route path="/statemap" component={StateMap} /> */}
-    <Route path="/countymap" component={CountyMap} />
-    <Route path="/Dashboard" component={Dashboard} />
-    <Route path="/explore" component={Explore} />
-    <Route path="/header" component={Header} />
-    <Route path="/registertovote" component={RegisterToVote} />
-    <Route path="/representatives" component={Representatives} />
-    <Route path="/searchinput" component={SearchInput} />
-  </Switch>
+	<Switch>
+		<Route exact path="/" component={Landing} />
+		<Route path="/repcard" component={RepCard} />
+		{/* <Route path="/statemap" component={StateMap} /> */}
+		<Route path="/countymap" component={CountyMap} />
+		<Route path="/Dashboard" component={Dashboard} />
+		<Route path="/explore" component={Explore} />
+		<Route path="/header" component={Header} />
+		<Route path="/registertovote" component={RegisterToVote} />
+		<Route path="/representatives" component={Representatives} />
+		<Route path="/searchinput" component={SearchInput} />
+	</Switch>
 );
