@@ -8,23 +8,41 @@ import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { getCityState } from '../../redux/addressReducer'
 import  SearchIcon  from '@material-ui/icons/Search'
-
+import Alert from '../Alert/Alert'
 
 
 const SearchInput = (props) => {
   const [city, setCity] = useState('')
   const [ usState, setUsState] = useState('')
   const [ submittable, setSubmittable] = useState(false)
+  // const [ badError, setError ] = useState(false)
 
+  const [open, setOpen] = useState(false)
 
+  
   const handleSubmit = async (e) => {
     e.preventDefault()
-    if (!city || !usState) { return alert('please choose a city from the list')}
+    if (!city || !usState) {
+        return setOpen(true)
+        // return (
+        //   <div className="onTop">
+        //     {alert('please put a valid city')}
+        //   </div>
+        //   )
+      }
     if (submittable) {
       await props.getCityState(city, usState)
       props.history.push(`/Dashboard?city=${city}&state=${usState}`)
     } 
 
+  }
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
   }
 
   const handleSelect = e => {
@@ -37,6 +55,7 @@ const SearchInput = (props) => {
 
   return (
     <div>
+      <Alert open={open} handleFn={handleClose}/>
       <Autocomplete
         id="City and State"
         options={cities}
