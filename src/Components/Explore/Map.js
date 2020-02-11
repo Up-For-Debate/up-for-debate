@@ -3,7 +3,7 @@ import { select, geoPath, geoAlbersUsa } from "d3";
 import useResizeobserver from "../../hooks/useResizeObserver.js";
 import "./map.css";
 
-function Map({ states, counties }) {
+function Map({ states, counties, setStateSelected,stateSelected }) {
   const svgRef = useRef();
   const wrapperRef = useRef();
   let dimensions = useResizeobserver(wrapperRef);
@@ -38,6 +38,7 @@ function Map({ states, counties }) {
       //set selected state to state clicked on or whole map
       .on("click", feature => {
         setSelectedState(selectedState === feature ? null : feature);
+        setStateSelected(stateSelected === feature.properties.NAME ? null : feature.properties.NAME)
         console.log(width);
       })
       //transition for zoom
