@@ -25,5 +25,6 @@ export default (
     <Route path="/registertovote" component={RegisterToVote} />
     <Route path="/representatives" component={Representatives} />
     <Route path="/searchinput" component={SearchInput} />
+    <Route path="/quiz" component={Quiz} />
   </Switch>
 );

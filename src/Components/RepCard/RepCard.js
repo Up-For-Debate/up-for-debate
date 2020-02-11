@@ -17,7 +17,7 @@ const useStyles = makeStyles({
   }
 });
 
-const RepCard = () => {
+const RepCard = props => {
   const classes = useStyles();
   return (
     <Card className={classes.root} elevation="5">
