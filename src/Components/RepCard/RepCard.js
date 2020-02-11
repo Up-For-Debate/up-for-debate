@@ -1,4 +1,5 @@
 import React from "react";
+import { withRouter, Redirect } from "react-router-dom";
 import { Card, CardActionArea } from "@material-ui/core";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
@@ -12,7 +13,7 @@ const useStyles = makeStyles({
     maxWidth: 300
   },
   media: {
-    height: 35,
+    height: 25,
     paddingTop: "20%"
   }
 });
@@ -24,31 +25,51 @@ const RepCard = props => {
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image="https://image.shutterstock.com/image-photo/house-lizard-isolated-white-background-260nw-1100720762.jpg"
+          //  image={ if{props.person.socialMedia ? ( image = {`https://twitter.com/${props.person.socialMedia[0].id}/profile_image?size=original
+          //   `}) : ()}
+
           title="Contemplative Reptile"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            Lizard
+            {props.person.officalName}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            Lizards are a widespread group of squamate reptiles.
+            {props.person.title}
+            <p>{props.person.party}</p>
           </Typography>
         </CardContent>
-      </CardActionArea>
-      <CardContent>
-        <Typography variant="body2">FB INSTA TWITTER</Typography>
-      </CardContent>
-      <CardActions>
-        <Button size="small" color="primary">
-          Share
-        </Button>
-        <Button size="small" color="primary">
+        <Button size="medium" color="primary">
           Learn More
         </Button>
-      </CardActions>
+      </CardActionArea>
+
+      <CardContent>
+        {props.person.socialMedia ? (
+          <a
+            target="_blank"
+            rel="noopener"
+            href={`https://www.facebook.com/${props.person.socialMedia[0].id}`}
+          >
+            FB
+          </a>
+        ) : (
+          <div></div>
+        )}
+        {props.person.socialMedia ? (
+          <a
+            target="_blank"
+            rel="noopener"
+            href={`https://www.twitter.com/${props.person.socialMedia[0].id}`}
+          >
+            TWR
+          </a>
+        ) : (
+          <div></div>
+        )}
+      </CardContent>
     </Card>
   );
 };
 
-export default RepCard;
+export default withRouter(RepCard);
