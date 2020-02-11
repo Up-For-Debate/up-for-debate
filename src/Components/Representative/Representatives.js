@@ -3,65 +3,90 @@ import axios from "axios";
 import RepCard from "../RepCard/RepCard";
 
 const Representatives = () => {
-	const [reps, setReps] = useState({});
 	const [offices, setOffices] = useState([]);
 	const [officials, setOfficals] = useState([]);
-	const [facebook, setFacebook] = useState([]);
+	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
 		getReps();
 	}, []);
-
 	useEffect(() => {
 		if (offices[1] && officials[1]) {
 			connectReps();
 		}
 	}, [offices, officials]);
-
-	const getReps = async () => {
-		await axios.get("/api/representatives?address=vineyard utah").then(res => {
+	const getReps = () => {
+		axios.get(`/api/representatives?address=vineyard utah`).then(res => {
 			setOffices(res.data.offices);
 			setOfficals(res.data.officials);
+			setLoading(false);
 		});
 	};
-	console.log(offices);
-	console.log(officials);
-
 	const connectReps = () => {
-		offices.map(ele => {
-			console.log(ele.name);
-			const repCards = ele.officialIndices.map(element => {
-				console.log(officials[element].name);
-				console.log(officials[element].party);
-				if (officials[element].address) {
-					var repAddress = officials[element].address[0];
-				}
-				if (officials[element].urls) {
-					var url = officials[element].urls[0];
-				}
-				if (officials[element].phones) {
-					var phone = officials[element].phones[0];
-				}
-
-				console.log(repAddress);
-
-				return (
-					<RepCard
-						name={officials[element].name}
-						party={officials[element].party}
-						address={repAddress}
-						url={url}
-						phone={phone}
-						socialMedia={
-							officials[element].channels ? officials[element].channels : null
-						}
-					/>
-				);
+		const connectedReps = offices
+			.map(ele => {
+				return ele.officialIndices.map(element => {
+					if (officials[element].address) {
+						var repAddress = officials[element].address[0];
+					}
+					if (officials[element].urls) {
+						var url = officials[element].urls[0];
+					}
+					if (officials[element].phones) {
+						var phone = officials[element].phones[0];
+					}
+					const person = {
+						divisionId: ele.divisionId,
+						title: ele.name,
+						officalName: officials[element].name,
+						party: officials[element].party,
+						address: repAddress, //This is an object
+						url: url,
+						phone: phone,
+						socialMedia: officials[element].channels
+							? officials[element].channels
+							: null
+					};
+					return person;
+				});
+			})
+			.flat();
+		console.log(connectedReps);
+		const countyReps = connectedReps
+			.filter(ele => ele.divisionId.includes("county"))
+			.map(rep => {
+				return <RepCard person={rep} />;
 			});
-		});
+		const stateReps = connectedReps
+			.filter(
+				ele =>
+					ele.divisionId.includes("state") &&
+					ele.divisionId.indexOf("county") === -1
+			)
+			.map(rep => {
+				return <RepCard person={rep} />;
+			});
+		const fedReps = connectedReps
+			.filter(
+				ele =>
+					ele.divisionId.includes("country") &&
+					ele.divisionId.indexOf("state") === -1
+			)
+			.map(rep => {
+				return <RepCard person={rep} />;
+			});
+		return (
+			<div style={{ width: "100px", height: "100px" }}>
+				<h2>County Reps</h2>
+				{countyReps}
+				<h2>State reps</h2>
+				{stateReps}
+				<h2>Federal Reps</h2>
+				{fedReps}
+			</div>
+		);
 	};
 
-	return <div>Representatives</div>;
+	return <div>{!loading && connectReps() ? connectReps() : "loading"}</div>;
 };
-
 export default Representatives;
