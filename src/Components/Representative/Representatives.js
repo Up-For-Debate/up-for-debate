@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import RepCard from "../RepContainer/RepContainer";
+import RepCard from "../RepCard/RepCard";
 
 const Representatives = () => {
 	const [offices, setOffices] = useState([]);
 	const [officials, setOfficals] = useState([]);
 	const [loading, setLoading] = useState(true);
-	const [county, setCounty] = useState([]);
-	const [state, setState] = useState([]);
-	const [federal, setFederal] = useState([]);
+
 	useEffect(() => {
 		getReps();
 	}, []);
