@@ -12,11 +12,15 @@
   fill: white;
 }
 
-/* .county{
+.no-display{
+  display: none;
+}
+
+.county{
   stroke: black;
   fill: white;
   
-} */
+}
 
 .state:hover{
   stroke: black;
