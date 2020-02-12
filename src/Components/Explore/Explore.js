@@ -1,15 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import states from "../../assets/states.json";
-import counties from "../../assets/counties.json";
 import Map from "./Map.js";
-import Header from "../Header/Header";
 
 const Explore = () => {
+  const [stateSelected, setStateSelected] = useState(null);
+
   return (
     <div>
-      <Header />
-      <h1>Explore</h1>
-      <Map states={states} counties={counties} />
+      Explore
+      <Map
+        states={states}
+        stateSelected={stateSelected}
+        setStateSelected={setStateSelected}
+      />
     </div>
   );
 };

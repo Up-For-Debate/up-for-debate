@@ -3,7 +3,7 @@ import { select, geoPath, geoAlbersUsa } from "d3";
 import useResizeobserver from "../../hooks/useResizeObserver.js";
 import "./map.css";
 
-function Map({ states, counties }) {
+function Map({ states, setStateSelected,stateSelected }) {
   const svgRef = useRef();
   const wrapperRef = useRef();
   let dimensions = useResizeobserver(wrapperRef);
@@ -25,20 +25,17 @@ function Map({ states, counties }) {
       .precision(2);
     const pathGenerator = geoPath().projection(projection);
     //D3 svg render
-    // svg
-    // .selectAll('.counties')
-    // .data(counties.features)
-    // .join('path')
-    // .attr('class', 'county')
-    // .attr('d',feature=> pathGenerator(feature))
+    
+    console.log(states.features)
     svg
       .selectAll(".state")
       .data(states.features)
       .join("path")
       //set selected state to state clicked on or whole map
       .on("click", feature => {
+        setStateSelected(stateSelected === feature.properties.NAME ? null : feature.properties.NAME)
         setSelectedState(selectedState === feature ? null : feature);
-        console.log(width);
+        // console.log(width);
       })
       //transition for zoom
       .transition()
@@ -48,11 +45,11 @@ function Map({ states, counties }) {
       .attr("id", feature => feature.properties.NAME)
       //sets dimensions
       .attr("d", feature => pathGenerator(feature));
-  }, [states, counties, dimensions, selectedState]);
+  }, [setStateSelected, stateSelected, states, dimensions, selectedState]);
 
   return (
     <>
-      <div className="map_wrapper" ref={wrapperRef}>
+      <div className="map-wrapper" ref={wrapperRef}>
         <svg className="map" ref={svgRef}></svg>
       </div>
       {selectedState ? <style>{".map{width: 50vw;"}</style> : <></>}
