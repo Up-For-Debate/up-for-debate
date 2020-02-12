@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import cities from './cities.json'
-import {TextField, InputBase, IconButton, Paper} from '@material-ui/core'
+import {TextField, IconButton, Paper} from '@material-ui/core'
 import {Autocomplete} from '@material-ui/lab'
 import match from 'autosuggest-highlight/match'
 import parse from 'autosuggest-highlight/parse'
@@ -15,7 +15,9 @@ const SearchInput = (props) => {
   const [city, setCity] = useState('')
   const [ usState, setUsState] = useState('')
   const [ submittable, setSubmittable] = useState(false)
-  // const [ badError, setError ] = useState(false)
+
+  const [ searchValue, setSearchValue ] = useState('')
+  const [ options, setOptions] = useState([])
 
   const [open, setOpen] = useState(false)
 
@@ -45,6 +47,16 @@ const SearchInput = (props) => {
     setSubmittable(true)
   }
 
+  const filterArr = () => {
+    let filteredArr = cities.filter( ele => ele.city.toLowerCase().includes(searchValue) || ele.state.toLowerCase().includes(searchValue)) 
+    filteredArr.length > 5 
+    ? setOptions(filteredArr.splice(0, 5))
+    : setOptions(filteredArr)
+  }
+
+  useEffect(() => {
+    filterArr()
+  }, [searchValue])
 
 
   return (
@@ -52,7 +64,7 @@ const SearchInput = (props) => {
       <Alert open={open} handleFn={handleClose}/>
       <Autocomplete
         id="City and State"
-        options={cities}
+        options={options}
         getOptionLabel={option => `${option.city}, ${option.state}`}
         style={{ width: 350 }}
         disableOpenOnFocus    
@@ -67,6 +79,7 @@ const SearchInput = (props) => {
               id="cityState"
               variant="filled" 
               style={{width: 300}} 
+              onChange={ e => setSearchValue(e.target.value) } 
             />
             <IconButton 
               type="submit" 
