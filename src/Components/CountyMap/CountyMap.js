@@ -54,7 +54,7 @@ const CountyMap = props => {
   return (
     <div>
       <div className="map-wrapper" ref={wrapperRef}>
-        <svg className="map" ref={svgRef}></svg>
+        <svg className="county-map" ref={svgRef}></svg>
       </div>
     </div>
   );

@@ -7,6 +7,11 @@
 
 }
 
+.county-map{
+  height: 70vh;
+  width: 100vw;
+}
+
 .state{
   stroke: black;
   fill: white;
@@ -15,6 +20,8 @@
 .no-display{
   display: none;
 }
+
+
 
 .county{
   stroke: black;
