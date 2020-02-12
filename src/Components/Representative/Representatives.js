@@ -21,8 +21,8 @@ const Representatives = (props) => {
   
 
   useEffect(() => {
-    getReps();
-  }, []);
+    if(props.usState !==null){getReps()}
+  }, [props.usState]);
   useEffect(() => {
     if (offices[1] && officials[1]) {
       connectReps();
@@ -30,15 +30,16 @@ const Representatives = (props) => {
   }, [offices, officials]);
   const getReps = () => {
     let { city, usState } = props
-    axios.get(`/api/representatives?address=${city} ${usState}`).then(res => { 
+    axios.get(`/api/representatives?address=${city ? city: ''} ${usState}`).then(res => { 
       // uncomment the above line and delete the below line when we no longer want to do styling/changes to representatives or rep cards
     // axios.get(`/api/representatives?address=vineyard utah`).then(res => {
-      setOffices(res.data.offices);
+      setOffices([...res.data.offices]);
       setOfficals(res.data.officials);
       setLoading(false);
     });
   };
   const connectReps = () => {
+    console.warn('connect Reps fired')
     const connectedReps = offices
       .map(ele => {
         return ele.officialIndices.map(element => {
@@ -67,8 +68,8 @@ const Representatives = (props) => {
         });
       })
       .flat();
-    // console.log(connectedReps);
-    const countyReps = connectedReps
+    console.log(connectedReps);
+    let countyReps = connectedReps
       .filter(ele => ele.divisionId.includes("county"))
       .map(rep => {
         return (
@@ -80,7 +81,7 @@ const Representatives = (props) => {
             </>
           )
       });
-    const stateReps = connectedReps
+    let stateReps = connectedReps
       .filter(
         ele =>
           ele.divisionId.includes("state") &&
@@ -93,7 +94,7 @@ const Representatives = (props) => {
           </Grid>
         )
       });
-    const fedReps = connectedReps
+    let fedReps = connectedReps
       .filter(
         ele =>
           ele.divisionId.includes("country") &&

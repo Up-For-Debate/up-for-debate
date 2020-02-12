@@ -2,8 +2,10 @@ import React, { useRef, useEffect, useState } from "react";
 import { select, geoPath, geoAlbersUsa } from "d3";
 import useResizeobserver from "../../hooks/useResizeObserver.js";
 import "./map.css";
+import {connect} from 'react-redux'
+import {getCityState} from '../../redux/addressReducer'
 
-function Map({ states, setStateSelected,stateSelected }) {
+function Map({ states, setStateSelected,stateSelected, getCityState }) {
   const svgRef = useRef();
   const wrapperRef = useRef();
   let dimensions = useResizeobserver(wrapperRef);
@@ -46,6 +48,8 @@ function Map({ states, setStateSelected,stateSelected }) {
       .attr("id", feature => feature.properties.NAME)
       //sets dimensions
       .attr("d", feature => pathGenerator(feature));
+      
+      getCityState(null, stateSelected)
   }, [setStateSelected, stateSelected, states, dimensions, selectedState]);
 
   return (
@@ -58,4 +62,7 @@ function Map({ states, setStateSelected,stateSelected }) {
   );
 }
 
-export default Map;
+const mapStateToProps = reduxState => 
+  reduxState
+
+export default connect(mapStateToProps, {getCityState})(Map);

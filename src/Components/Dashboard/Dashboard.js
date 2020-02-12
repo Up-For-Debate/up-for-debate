@@ -4,11 +4,8 @@ import Representatives from '../Representative/Representatives'
 import CountyMap from '../CountyMap/CountyMap'
 import { Grid, Paper, Button } from '@material-ui/core'
 
-
 const Dashboard = () => {
   return (
-    <>
-    <CountyMap/>
     <Grid container className="dashboard"> 
       <Grid item xs={12} className="link-area">
         <Paper>
@@ -20,10 +17,9 @@ const Dashboard = () => {
           <Representatives />
       </Grid>
       <Grid item xs={4}c lassName="map-area">
-        {/* <CountyMap /> */}
+        <CountyMap />
       </Grid>
     </Grid>
-    </>
   );
 };
 
