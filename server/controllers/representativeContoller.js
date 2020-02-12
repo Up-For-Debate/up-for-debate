@@ -10,14 +10,12 @@ const {
 var https = require("follow-redirects").https;
 var fs = require("fs");
 var Twit = require("twit");
-
 var T = new Twit({
 	consumer_key: CONSUMER_KEY,
 	consumer_secret: CONSUMER_SECRET,
 	access_token: ACCESS_TOKEN,
 	access_token_secret: TOKEN_SECRET
 });
-
 module.exports = {
 	getRepresentatives: async (req, res) => {
 		const { address } = req.query;
@@ -27,11 +25,11 @@ module.exports = {
 		req.session.address = {
 			address: req.query.address
 		};
-
 		res.status(200).send(representatives.data);
 	},
 	getRepsPicture: async (req, res) => {
 		const { handle } = req.query;
+		console.log("hello");
 		T.get("users/show", { screen_name: `${handle}` }, function(
 			err,
 			data,
@@ -39,11 +37,11 @@ module.exports = {
 		) {
 			let profileImage = data.profile_image_url_https;
 			if (profileImage) {
+				console.log(profileImage);
 				let profileImageTwo = profileImage
 					.split("_normal")
 					.toString()
 					.replace(",", "");
-
 				res.status(200).send(profileImageTwo);
 			} else {
 				res.status(200).send(null);
