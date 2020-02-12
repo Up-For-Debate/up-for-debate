@@ -7,6 +7,14 @@ import stateNumbers from "./stateNumber.js";
 import { connect } from "react-redux";
 
 const CountyMap = props => {
+
+  const filterCountyName =(countyName)=> {
+    const split = countyName.split(' ')
+    const string = split.toString().replace(',', '-')
+    return string
+  }
+  
+
   console.log(props);
   const svgRef = useRef();
   const wrapperRef = useRef();
@@ -48,7 +56,7 @@ const CountyMap = props => {
       .join("path")
       .attr("class", "county")
       // .attr('class', feature => selectedState === feature.properties.STATEFP ? 'selected-state' : 'not-selected-state')
-      .attr("id", feature => feature.properties.NAME)
+      .attr("id", feature => filterCountyName(feature.properties.NAME)+'-county')
       .attr("d", feature => pathGenerator(feature));
   }, [selectedStateNum]);
   return (

@@ -11,6 +11,15 @@ const Representatives = (props) => {
   const [officials, setOfficals] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const filterRepName =(repName)=> {
+    const split = repName.split(' ')
+    const countyIndex = split.indexOf("County")
+    const spliced = split.splice(0, countyIndex)
+    const string = spliced.toString().replace(',', '-')
+    return string
+  }
+  
+
   useEffect(() => {
     getReps();
   }, []);
@@ -21,9 +30,9 @@ const Representatives = (props) => {
   }, [offices, officials]);
   const getReps = () => {
     let { city, usState } = props
-    // axios.get(`/api/representatives?address=${city} ${usState}`).then(res => { 
+    axios.get(`/api/representatives?address=${city} ${usState}`).then(res => { 
       // uncomment the above line and delete the below line when we no longer want to do styling/changes to representatives or rep cards
-    axios.get(`/api/representatives?address=vineyard utah`).then(res => {
+    // axios.get(`/api/representatives?address=vineyard utah`).then(res => {
       setOffices(res.data.offices);
       setOfficals(res.data.officials);
       setLoading(false);
@@ -63,9 +72,12 @@ const Representatives = (props) => {
       .filter(ele => ele.divisionId.includes("county"))
       .map(rep => {
         return (
+          <>
             <Grid item xs={4}>
               <RepCard person={rep} />
             </Grid>
+            <style>{`#${filterRepName(rep.title)}-county{fill: tomato;}`}</style>
+            </>
           )
       });
     const stateReps = connectedReps

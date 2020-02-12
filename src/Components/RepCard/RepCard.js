@@ -26,7 +26,7 @@ const RepCard = props => {
 	useEffect(
 		() =>
 			props.person.socialMedia
-				? Axios.get(
+				? axios.get(
 						`/api/representatives/picture?handle=${props.person.socialMedia[0].id}`
 				  ).then(res => {
 						console.log(res.data);
