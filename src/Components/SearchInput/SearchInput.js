@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import cities from './cities.json'
 import {TextField, InputBase, IconButton, Paper} from '@material-ui/core'
 import {Autocomplete} from '@material-ui/lab'
@@ -24,11 +24,6 @@ const SearchInput = (props) => {
     e.preventDefault()
     if (!city || !usState) {
         return setOpen(true)
-        // return (
-        //   <div className="onTop">
-        //     {alert('please put a valid city')}
-        //   </div>
-        //   )
       }
     if (submittable) {
       await props.getCityState(city, usState)
@@ -41,7 +36,6 @@ const SearchInput = (props) => {
     if (reason === 'clickaway') {
       return;
     }
-
     setOpen(false);
   }
 
@@ -49,8 +43,8 @@ const SearchInput = (props) => {
     setCity(e.target.value.split(', ')[0])
     setUsState(e.target.value.split(', ')[1])
     setSubmittable(true)
-
   }
+
 
 
   return (
@@ -72,9 +66,14 @@ const SearchInput = (props) => {
               label="City, State" 
               id="cityState"
               variant="filled" 
-              style={{width: 300}} />
-            <IconButton type="submit" aria-label="search" onClick={ e => handleSubmit(e)} >
-              <SearchIcon />
+              style={{width: 300}} 
+            />
+            <IconButton 
+              type="submit" 
+              aria-label="search" 
+              onClick={ e => handleSubmit(e)} 
+            >
+                <SearchIcon />
             </IconButton>
           </Paper>
         )}
@@ -93,6 +92,8 @@ const SearchInput = (props) => {
           )
         }}
       />
+
+
     </div>
     );
 };
@@ -102,9 +103,3 @@ const mapStateToProps = reduxState => {
 }
 
 export default withRouter(connect(mapStateToProps, {getCityState})(SearchInput));
-
-
-// TODO FOR THIS COMPONENT
-// make the alert on line 22 a prettier thing (Bootstrap Flash kind of thing.)
-// make the input outline red if incorrect
-// 

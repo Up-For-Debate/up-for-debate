@@ -16,7 +16,7 @@ import Quiz from "./Components/Quiz/Quiz";
 export default (
   <Switch>
     <Route exact path="/" component={Landing} />
-    <Route path="/repcard" component={RepCard} />
+    {/* <Route path="/repcard" component={RepCard} /> */}
     {/* <Route path="/statemap" component={StateMap} /> */}
     <Route path="/countymap" component={CountyMap} />
     <Route path="/Dashboard" component={Dashboard} />
