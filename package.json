@@ -30,7 +30,9 @@
 		"redux": "^4.0.5",
 		"redux-devtools-extension": "^2.13.8",
 		"redux-promise-middleware": "^6.1.2",
-		"resize-observer-polyfill": "^1.5.1"
+		"resize-observer-polyfill": "^1.5.1",
+		"twit": "^2.2.11",
+		"twitter": "^1.7.1"
 	},
 	"scripts": {
 		"start": "react-scripts start",
