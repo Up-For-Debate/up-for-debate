@@ -26,7 +26,7 @@ function Map({ states, setStateSelected,stateSelected }) {
     const pathGenerator = geoPath().projection(projection);
     //D3 svg render
     
-    console.log(states.features)
+    // console.log(states.features)
     svg
       .selectAll(".state")
       .data(states.features)
@@ -34,7 +34,8 @@ function Map({ states, setStateSelected,stateSelected }) {
       //set selected state to state clicked on or whole map
       .on("click", feature => {
         setStateSelected(stateSelected === feature.properties.NAME ? null : feature.properties.NAME)
-        setSelectedState(selectedState === feature ? null : feature);
+        setSelectedState(selectedState === feature ? null : feature)
+        ;
         // console.log(width);
       })
       //transition for zoom
@@ -49,10 +50,10 @@ function Map({ states, setStateSelected,stateSelected }) {
 
   return (
     <>
-      <div className="map-wrapper" ref={wrapperRef}>
+      <div className="map-wrapper map" ref={wrapperRef}>
         <svg className="map" ref={svgRef}></svg>
       </div>
-      {selectedState ? <style>{".map{width: 50vw;"}</style> : <></>}
+      {selectedState ? <style>{`.map{ width: 33vw; height: 30vh;} #${stateSelected}{stroke: navyblue; stroke-width: 4px;} .explore-map{grid-column: 3} .explore-reps{display: block}`}</style> : <></>}
     </>
   );
 }
