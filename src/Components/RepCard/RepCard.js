@@ -22,34 +22,46 @@ const useStyles = makeStyles({
 const RepCard = props => {
 	const classes = useStyles();
 	const [profilePicture, setProfilePicture] = useState("");
+	const [twitterPicture, setTwitterPicture] = useState("");
+	const [facebookPicture, setFacebookPicture] = useState("");
 
 	useEffect(
 		() =>
 			props.person.socialMedia
-				? Axios.get(
-						`/api/representatives/picture?handle=${props.person.socialMedia[0].id}`
-				  ).then(res => {
-						console.log(res.data);
-						setProfilePicture(res.data);
+				? props.person.socialMedia.map(ele => {
+						if (ele.type === "Twitter") {
+							axios
+								.get(`/api/representatives/picture?handle=${ele.id}`)
+								.then(res => {
+									setTwitterPicture(res.data);
+								});
+						} else if (ele.type === "Facebook") {
+							setFacebookPicture(
+								`https://graph.facebook.com/${ele.id}/picture?type=large`
+							);
+						} else {
+							return null;
+						}
 				  })
 				: null,
 		[]
 	);
+	console.log(facebookPicture);
 
 	return (
 		<Card className={classes.root} elevation="5">
 			<CardActionArea>
 				{props.person.socialMedia ? (
-					props.person.socialMedia[0].id === "Facebook" ? (
+					twitterPicture ? (
 						<CardMedia
 							className={classes.media}
-							image={profilePicture}
+							image={twitterPicture}
 							title="political profile image"
 						/>
 					) : (
 						<CardMedia
 							className={classes.media}
-							image={profilePicture}
+							image={facebookPicture}
 							title="profile image"
 						/>
 					)
