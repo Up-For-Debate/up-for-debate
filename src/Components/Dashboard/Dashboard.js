@@ -8,7 +8,7 @@ const Dashboard = () => {
   return (
     <Grid container className="dashboard">
       <Grid item xs={12} className="link-area">
-        <Paper color="primary.dark">
+        <Paper color="dark">
           <Button variant="contained" color="primary">
             Register to vote
           </Button>{" "}
