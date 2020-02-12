@@ -7,6 +7,8 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core";
+import TwitterIcon from "@material-ui/icons/Twitter";
+import FacebookIcon from "@material-ui/icons/Facebook";
 import axios from "axios";
 
 const useStyles = makeStyles({
@@ -87,7 +89,7 @@ const RepCard = props => {
             rel="noopener"
             href={`https://www.facebook.com/${props.person.socialMedia[0].id}`}
           >
-            FB
+            <FacebookIcon fontSize="large" color="primary" />
           </a>
         ) : (
           <div></div>
@@ -98,7 +100,7 @@ const RepCard = props => {
             rel="noopener"
             href={`https://www.twitter.com/${props.person.socialMedia[0].id}`}
           >
-            TWR
+            <TwitterIcon fontSize="large" style={{ color: "#1da1f1" }} />
           </a>
         ) : (
           <div></div>
