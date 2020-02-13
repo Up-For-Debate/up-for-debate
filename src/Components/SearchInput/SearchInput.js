@@ -48,7 +48,7 @@ const SearchInput = (props) => {
   }
 
   const filterArr = () => {
-    let filteredArr = cities.filter( ele => ele.city.toLowerCase().includes(searchValue) || ele.state.toLowerCase().includes(searchValue)) 
+    let filteredArr = cities.filter( ele => ele.city.toLowerCase().includes(searchValue.toLowerCase()) || ele.state.toLowerCase().includes(searchValue.toLowerCase())) 
     filteredArr.length > 5 
     ? setOptions(filteredArr.splice(0, 5))
     : setOptions(filteredArr)
