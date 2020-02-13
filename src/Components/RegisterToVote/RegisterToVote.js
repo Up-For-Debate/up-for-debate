@@ -1,35 +1,39 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { connect } from 'react-redux'
 import { Paper, Grid, Button } from '@material-ui/core'
 import { withRouter } from 'react-router-dom'
+import axios from 'axios'
 
 
 const RegisterToVote = (props) => {
+  const [ linkUrl, setLinkUrl ] = useState('')
 
-const checkState = (place) => {
-  switch(place){
-    case 'Utah':
-      return 'https://secure.utah.gov/voterreg/login.html?selection=REGISTER'
-    default:
-      return 'https://vote.gov/register/ar/'
+  const checkState = () => {
+    console.log('fired the check state')
+    axios.get(`/api/states/${props.usState}`)
+      .then( res => setLinkUrl(res.data))
+      .catch( err => console.log(err) )
   }
-}
+
+  useEffect(() => {
+    checkState()
+  }, [])
 
   return (
     <>
-      <Paper>
-        <Grid container style={{justifyContent:'center'}}>
-          <Grid item >
-            <Button 
-              variant="contained" 
-              color="secondary"
-
-            >
-              Register To Vote
-            </Button>
-          </Grid>
-        </Grid>
-      </Paper>
+      <Button 
+        variant="contained" 
+        color="secondary"
+      >
+        <a
+          target="_blank"
+          rel="noopener"
+          href={linkUrl}
+          style={{color: 'inherit', textDecoration: 'inherit'}}
+        >
+          Register To Vote
+        </a>
+      </Button>
     </>
     )
 };
