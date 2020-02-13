@@ -6,6 +6,7 @@ const gs = require("gradient-string");
 const { SERVER_PORT, SESSION_SECRET } = process.env;
 
 const repCtrl = require("./controllers/representativeContoller");
+const electionCtrl = require("./controllers/upcomingElectionsController");
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.use(
 
 app.get("/api/representatives", repCtrl.getRepresentatives);
 app.get("/api/representatives/picture", repCtrl.getRepsPicture);
+app.get("/api/elections", electionCtrl.getUpcomingElections);
 
 app.listen(SERVER_PORT, () =>
 	console.log(gs.summer(`${SERVER_PORT} is listening`))
