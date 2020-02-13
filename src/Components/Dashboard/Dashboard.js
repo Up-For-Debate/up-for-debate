@@ -28,7 +28,7 @@ const Dashboard = () => {
       <Grid item xs={8} className="rep-area">
         <Representatives />
       </Grid>
-      <Grid item xs={4}c lassName="map-area">
+      <Grid item xs={4} className="map-area">
         <CountyMap />
       </Grid>
     </Grid>
