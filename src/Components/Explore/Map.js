@@ -5,7 +5,7 @@ import "./map.css";
 import {connect} from 'react-redux'
 import {getCityState} from '../../redux/addressReducer'
 
-function Map({ states, setStateSelected,stateSelected, getCityState }) {
+function Map({ states, setStateSelected,stateSelected, getCityState:propsGetCityState }) {
   const svgRef = useRef();
   const wrapperRef = useRef();
   let dimensions = useResizeobserver(wrapperRef);
@@ -48,8 +48,9 @@ function Map({ states, setStateSelected,stateSelected, getCityState }) {
       .attr("id", feature => feature.properties.NAME)
       //sets dimensions
       .attr("d", feature => pathGenerator(feature));
-      
-      getCityState(null, stateSelected)
+      if(stateSelected){
+        propsGetCityState(null, stateSelected)
+      }
   }, [setStateSelected, stateSelected, states, dimensions, selectedState]);
 
   return (

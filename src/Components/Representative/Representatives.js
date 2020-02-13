@@ -28,6 +28,7 @@ const Representatives = props => {
     }
   }, [offices, officials]);
   const getReps = () => {
+    setLoading(true)
     let { city, usState } = props;
     axios.get(`/api/representatives?address=${city} ${usState}`).then(res => {
       // uncomment the above line and delete the below line when we no longer want to do styling/changes to representatives or rep cards
