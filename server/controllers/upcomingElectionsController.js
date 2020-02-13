@@ -1,4 +1,4 @@
-const { API_KEY } = process.env;
+const { API_KEY, GOOGLE_MAPS_KEY } = process.env;
 const axios = require("axios");
 
 module.exports = {
