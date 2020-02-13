@@ -2,12 +2,17 @@ import React, { useRef, useEffect, useState } from "react";
 import { select, geoPath, geoAlbersUsa } from "d3";
 import useResizeobserver from "../../hooks/useResizeObserver.js";
 import "./map.css";
+import {connect} from 'react-redux'
+import {getCityState} from '../../redux/addressReducer'
 
-function Map({ states, setStateSelected,stateSelected }) {
+function Map({ states, setStateSelected,stateSelected, getCityState:propsGetCityState }) {
   const svgRef = useRef();
   const wrapperRef = useRef();
   let dimensions = useResizeobserver(wrapperRef);
   const [selectedState, setSelectedState] = useState(null);
+ 
+
+  
 
   useEffect(() => {
     const svg = select(svgRef.current);
@@ -33,9 +38,13 @@ function Map({ states, setStateSelected,stateSelected }) {
       .join("path")
       //set selected state to state clicked on or whole map
       .on("click", feature => {
+        // if(stateDelay=== false) {
         setStateSelected(stateSelected === feature.properties.NAME ? null : feature.properties.NAME)
         setSelectedState(selectedState === feature ? null : feature)
-        ;
+        
+        // } else {
+        //   alert('Wait before selecting another state')
+        // }
         // console.log(width);
       })
       //transition for zoom
@@ -46,6 +55,9 @@ function Map({ states, setStateSelected,stateSelected }) {
       .attr("id", feature => feature.properties.NAME)
       //sets dimensions
       .attr("d", feature => pathGenerator(feature));
+      if(stateSelected){
+        propsGetCityState(null, stateSelected)
+      }
   }, [setStateSelected, stateSelected, states, dimensions, selectedState]);
 
   return (
@@ -58,4 +70,7 @@ function Map({ states, setStateSelected,stateSelected }) {
   );
 }
 
-export default Map;
+const mapStateToProps = reduxState => 
+  reduxState
+
+export default connect(mapStateToProps, {getCityState})(Map);

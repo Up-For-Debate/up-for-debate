@@ -15,8 +15,10 @@ export const getCityState = (city, usState) => {
 
 export default function reducer(state = initialState, action) {
   const { type, payload } = action
+  
   switch(type){
     case GET_CITYSTATE:
+      
       return { ...state, 
         city: payload.city, 
         usState: payload.usState }
