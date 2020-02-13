@@ -10,40 +10,45 @@ const Representatives = props => {
   const [officials, setOfficals] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const filterRepName =(repName)=> {
-    const split = repName.split(' ')
-    const countyIndex = split.indexOf("County")
-    const spliced = split.splice(0, countyIndex)
-    const string = spliced.toString().replace(',', '-')
-    return string
-  }
-  
+  const filterRepName = repName => {
+    const split = repName.split(" ");
+    const countyIndex = split.indexOf("County");
+    const spliced = split.splice(0, countyIndex);
+    const string = spliced.toString().replace(",", "-");
+    return string;
+  };
 
   useEffect(() => {
-    if(props.usState !==null){getReps()}
+    if (props.usState !== null) {
+      getReps();
+    }
   }, [props.usState]);
   useEffect(() => {
-    if (offices[1] && officials[1]) {
+    if (offices[0] && officials[0]) {
       connectReps();
     }
-  }, [offices, officials]);
+  }, [officials]);
   const getReps = () => {
-    setLoading(true)
+    setLoading(true);
     let { city, usState } = props;
-    axios.get(`/api/representatives?address=${city} ${usState}`).then(res => {
-      // uncomment the above line and delete the below line when we no longer want to do styling/changes to representatives or rep cards
-      // axios.get(`/api/representatives?address=vineyard utah`).then(res => {
-      setOffices(res.data.offices);
-      setOfficals(res.data.officials);
-      setLoading(false);
-    });
+    
+      axios.get(`/api/representatives?address=City ${city} State ${usState}`).then(res => {
+        // uncomment the above line and delete the below line when we no longer want to do styling/changes to representatives or rep cards
+        // axios.get(`/api/representatives?address=vineyard utah`).then(res => {
+        setOffices(res.data.offices);
+        setOfficals(res.data.officials);
+        setLoading(false);
+      });
+    
   };
   const connectReps = () => {
-    console.warn('connect Reps fired')
+    console.warn("connect Reps fired");
     const connectedReps = offices
       .map(ele => {
         return ele.officialIndices.map(element => {
+          console.log(element)
           if (officials[element].address) {
+            // console.log(officials[element].address);
             var repAddress = officials[element].address[0];
           }
           if (officials[element].urls) {
@@ -77,9 +82,11 @@ const Representatives = props => {
             <Grid item xs={4}>
               <RepCard person={rep} />
             </Grid>
-            <style>{`#${filterRepName(rep.title)}-county{fill: tomato;}`}</style>
-            </>
-          )
+            <style>{`#${filterRepName(
+              rep.title
+            )}-county{fill: tomato;}`}</style>
+          </>
+        );
       });
     let stateReps = connectedReps
       .filter(

@@ -10,6 +10,9 @@ function Map({ states, setStateSelected,stateSelected, getCityState:propsGetCity
   const wrapperRef = useRef();
   let dimensions = useResizeobserver(wrapperRef);
   const [selectedState, setSelectedState] = useState(null);
+ 
+
+  
 
   useEffect(() => {
     const svg = select(svgRef.current);
@@ -35,9 +38,13 @@ function Map({ states, setStateSelected,stateSelected, getCityState:propsGetCity
       .join("path")
       //set selected state to state clicked on or whole map
       .on("click", feature => {
+        // if(stateDelay=== false) {
         setStateSelected(stateSelected === feature.properties.NAME ? null : feature.properties.NAME)
         setSelectedState(selectedState === feature ? null : feature)
-        ;
+        
+        // } else {
+        //   alert('Wait before selecting another state')
+        // }
         // console.log(width);
       })
       //transition for zoom
