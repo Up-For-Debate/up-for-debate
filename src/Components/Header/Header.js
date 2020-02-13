@@ -1,8 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Header.scss";
+import { useTheme } from "@material-ui/core/styles";
 
 const Header = () => {
+  const theme = useTheme();
+
   return (
     <div className="header-container">
       <div>
