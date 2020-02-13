@@ -29,7 +29,7 @@ const Dashboard = () => {
         <Representatives />
       </Grid>
       <Grid item xs={4} className="map-area">
-        {/* <CountyMap /> */}
+        <CountyMap />
       </Grid>
     </Grid>
   );
