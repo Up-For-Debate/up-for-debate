@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import states from "../../assets/states.json";
 import Map from "./Map.js";
 import "./explore.css";

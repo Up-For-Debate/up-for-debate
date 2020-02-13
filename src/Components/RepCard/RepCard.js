@@ -29,28 +29,23 @@ const RepCard = props => {
   const [twitterPicture, setTwitterPicture] = useState("");
   const [facebookPicture, setFacebookPicture] = useState("");
 
-  useEffect(
-    () =>
-      props.person.socialMedia
-        ? props.person.socialMedia.map(ele => {
-            if (ele.type === "Twitter") {
-              console.log("hello");
-              axios
-                .get(`/api/representatives/picture?handle=${ele.id}`)
-                .then(res => {
-                  setTwitterPicture(res.data);
-                });
-            } else if (ele.type === "Facebook") {
-              setFacebookPicture(
-                `https://graph.facebook.com/${ele.id}/picture?type=large`
-              );
-            } else {
-              return null;
-            }
-          })
-        : null,
-    []
-  );
+  useEffect(() => {
+    if (props.person.socialMedia) {
+      props.person.socialMedia.forEach(ele => {
+        if (ele.type === "Twitter") {
+          axios
+            .get(`/api/representatives/picture?handle=${ele.id}`)
+            .then(res => {
+              setTwitterPicture(res.data);
+            });
+        } else if (ele.type === "Facebook") {
+          setFacebookPicture(
+            `https://graph.facebook.com/${ele.id}/picture?type=large`
+          );
+        }
+      });
+    }
+  }, []);
 
   return (
     <Card className={classes.root} elevation="5">
