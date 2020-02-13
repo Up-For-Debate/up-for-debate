@@ -11,6 +11,7 @@ import TwitterIcon from "@material-ui/icons/Twitter";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import axios from "axios";
 
+console.log('rep card exists')
 const useStyles = makeStyles({
 	root: {
 		height: 300,
@@ -32,29 +33,29 @@ const RepCard = props => {
 
 	useEffect(
 		() =>
-			props.person.socialMedia
-				? props.person.socialMedia.map(ele => {
-						if (ele.type === "Twitter") {
-							console.log("hello");
-							axios
-								.get(`/api/representatives/picture?handle=${ele.id}`)
+		props.person.socialMedia
+		? props.person.socialMedia.map(ele => {
+			if (ele.type === "Twitter") {
+				axios
+				.get(`/api/representatives/picture?handle=${ele.id}`)
 								.then(res => {
 									setTwitterPicture(res.data);
 								});
 						} else if (ele.type === "Facebook") {
 							setFacebookPicture(
 								`https://graph.facebook.com/${ele.id}/picture?type=large`
-							);
+								);
 						} else {
 							return null;
 						}
 				  })
 				: null,
 		[]
-	);
+		);
+		console.log('repcard useeffect fired')
 
-	return (
-		<Card className={classes.root} elevation="5">
+		return (
+			<Card className={classes.root} elevation="5">
 			<CardActionArea>
 				{props.person.socialMedia ? (
 					twitterPicture ? (

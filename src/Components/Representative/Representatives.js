@@ -1,68 +1,98 @@
-import React, { useState, useEffect } from "react";
+import React, { Component} from "react";
 import axios from "axios";
 import RepCard from "../RepCard/RepCard";
 import { HashLink as Link } from "react-router-hash-link";
 import { connect } from "react-redux";
 import { Grid, Button } from "@material-ui/core";
 
-const Representatives = props => {
-  const [offices, setOffices] = useState([]);
-  const [officials, setOfficals] = useState([]);
-  const [loading, setLoading] = useState(true);
 
-  const filterRepName =(repName)=> {
-    const split = repName.split(' ')
-    const countyIndex = split.indexOf("County")
-    const spliced = split.splice(0, countyIndex)
-    const string = spliced.toString().replace(',', '-')
-    return string
-  }
-  
-
-  useEffect(() => {
-    if(props.usState !==null){getReps()}
-  }, [props.usState]);
-  useEffect(() => {
-    if (offices[1] && officials[1]) {
-      connectReps();
+class Representatives extends Component{
+  constructor(){
+    super()
+    this.state= {
+      offices: [],
+      officials: [],
+      loading: true
     }
-  }, [offices, officials]);
-  const getReps = () => {
-    let { city, usState } = props;
-    axios.get(`/api/representatives?address=${city} ${usState}`).then(res => {
-      // uncomment the above line and delete the below line when we no longer want to do styling/changes to representatives or rep cards
-      // axios.get(`/api/representatives?address=vineyard utah`).then(res => {
-      setOffices(res.data.offices);
-      setOfficals(res.data.officials);
-      setLoading(false);
-    });
+  }
+  handleChange(key, value) {
+    this.setState(
+      {
+        [key]: value
+      }
+    )
+  }
+
+  filterRepName = repName => {
+    const split = repName.split(" ");
+    const countyIndex = split.indexOf("County");
+    const spliced = split.splice(0, countyIndex);
+    const string = spliced.toString().replace(",", "-");
+    return string;
   };
-  const connectReps = () => {
-    console.warn('connect Reps fired')
-    const connectedReps = offices
+
+  combined = async () => {
+    // console.log('1111111111111111111111111111')
+    this.handleChange('offices', [])
+    this.handleChange('officials', [])
+    // console.log('22222222222222222222222222222', offices, officials)
+    // setTimeout(()=>{
+    //   console.log('3333333333333333333333333333333', offices, officials)
+    // }, 15000)
+    if (this.props.usState !== null) await this.getReps();
+    if (this.state.offices[1] && this.state.officials[1] && this.props.usState !== null) {
+      this.connectReps();
+    }
+  };
+
+  componentDidUpdate(prevProps) {
+    prevProps === this.props ? console.log('No CDU'): this.combined()
+  }
+
+  getReps = () => {
+    console.log('hit getReps 444444444444444444444444444')
+    let { city, usState } = this.props;
+    axios
+      .get(`/api/representatives?address=${city ? city : ""} ${usState}`)
+      .then(res => {
+        console.log('55555555555555555555555555', res.data)
+        // uncomment the above line and delete the below line when we no longer want to do styling/changes to representatives or rep cards
+        // axios.get(`/api/representatives?address=vineyard utah`).then(res => {
+        this.handleChange('offices', res.data.offices);
+        this.handleChange('officials', res.data.officials);
+        this.handleChange('loading', false);
+      });
+  };
+  connectReps = () => {
+    console.log("connect Reps fired");
+    const connectedReps = this.state.offices
       .map(ele => {
         return ele.officialIndices.map(element => {
-          if (officials[element].address) {
-            var repAddress = officials[element].address[0];
+          if (this.state.officials[element].address) {
+            var repAddress = this.state.officials[element].address[0];
+        
           }
-          if (officials[element].urls) {
-            var url = officials[element].urls[0];
+          if (this.state.officials[element].urls) {
+            var url = this.state.officials[element].urls[0];
+          
           }
-          if (officials[element].phones) {
-            var phone = officials[element].phones[0];
+          if (this.state.officials[element].phones) {
+            var phone = this.state.officials[element].phones[0];
+          
           }
           const person = {
             divisionId: ele.divisionId,
             title: ele.name,
-            officalName: officials[element].name,
-            party: officials[element].party,
+            officalName: this.state.officials[element].name,
+            party: this.state.officials[element].party,
             address: repAddress, //This is an object
             url: url,
             phone: phone,
-            socialMedia: officials[element].channels
-              ? officials[element].channels
+            socialMedia: this.state.officials[element].channels
+              ? this.state.officials[element].channels
               : null
           };
+          // console.log(person)
           return person;
         });
       })
@@ -76,9 +106,11 @@ const Representatives = props => {
             <Grid item xs={4}>
               <RepCard person={rep} />
             </Grid>
-            <style>{`#${filterRepName(rep.title)}-county{fill: tomato;}`}</style>
-            </>
-          )
+            <style>{`#${this.filterRepName(
+              rep.title
+            )}-county{fill: tomato;}`}</style>
+          </>
+        );
       });
     let stateReps = connectedReps
       .filter(
@@ -135,7 +167,9 @@ const Representatives = props => {
     );
   };
 
-  return <div>{!loading && connectReps() ? connectReps() : "loading"}</div>;
+  render(){
+  return <div>{!this.state.loading && this.connectReps() ? this.connectReps() : "loading"}</div>;
+  }
 };
 
 const mapStateToProps = reduxState => {
