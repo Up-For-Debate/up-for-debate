@@ -4,6 +4,7 @@ import Representatives from "../Representative/Representatives";
 import CountyMap from "../CountyMap/CountyMap";
 import { Grid, Paper, Button } from "@material-ui/core";
 import { useTheme, makeStyles } from "@material-ui/core/styles";
+import RegisterToVote from '../RegisterToVote/RegisterToVote'
 
 const Dashboard = () => {
   const theme = useTheme();
@@ -31,9 +32,7 @@ const Dashboard = () => {
           style={{ backgroundColor: theme.palette.primary.dark }}
           className={classes.paper}
         >
-          <Button variant="contained" color="secondary">
-            Register to vote
-          </Button>
+          <RegisterToVote />
           <Button variant="contained" color="secondary">
             Where to vote
           </Button>
