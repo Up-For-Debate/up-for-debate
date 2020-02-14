@@ -3,6 +3,7 @@ import GoogleMapComponent from "./GoogleMapComponent";
 import axios from "axios";
 import RegisterToVote from "../RegisterToVote/RegisterToVote";
 import { GoogleMap, LoadScript } from "@react-google-maps/api";
+import { connect } from "react-redux";
 const { REACT_APP_GOOGLE_MAPS_KEY } = process.env;
 
 //Unhighlight anything in the function if you want google maps to render. Only render it if you need.
@@ -27,12 +28,13 @@ const Vote = props => {
 			setStateElections(elections.state[0]);
 			setFederalElection(elections.election);
 			destructurePollingLocation();
-			// setPollingLocation(elections.pollingLocations);
+			setPollingLocation(elections.pollingLocations);
+			console.log(elections.pollingLocations);
 		}
 	}, [elections]);
-	// useEffect(() => {
-	// 	GeoCodeAddress();
-	// }, [pollingLocation]);
+	useEffect(() => {
+		GeoCodeAddress();
+	}, [pollingLocation]);
 
 	const destructurePollingLocation = () => {
 		if (elections) {
@@ -42,9 +44,10 @@ const Vote = props => {
 	};
 	const GeoCodeAddress = () => {
 		if (pollingLocation) {
+			console.log(pollingLocation);
 			axios
 				.get(
-					`https://maps.googleapis.com/maps/api/geocode/json?address=${pollingLocation.line1} ${pollingLocation.city} ${pollingLocation.state} ${pollingLocation.zip}&key=${REACT_APP_GOOGLE_MAPS_KEY}	
+					`https://maps.googleapis.com/maps/api/geocode/json?address=${pollingLocation[0].address.line1} ${pollingLocation[0].address.city} ${pollingLocation[0].address.state} ${pollingLocation[0].address.zip}&key=${REACT_APP_GOOGLE_MAPS_KEY}	
 `
 				)
 				.then(res => {
@@ -53,6 +56,7 @@ const Vote = props => {
 				});
 		}
 	};
+	console.log(geoCodeAddress);
 
 	return (
 		<div>
@@ -108,17 +112,23 @@ const Vote = props => {
 					</div>
 				) : null
 			) : null}
-			{/* {geoCodeAddress ? (
-				<h2>Looking For Where to Vote?</h2>
-				<GoogleMapComponent
-					formatedLocation={pollingFormated}
-					lat={geoCodeAddress.lat}
-					lng={geoCodeAddress.lng}
-				/>
+			{geoCodeAddress ? (
+				<>
+					<h2>Looking For Where to Vote?</h2>
+					<GoogleMapComponent
+						formatedLocation={pollingFormated}
+						lat={geoCodeAddress.lat}
+						lng={geoCodeAddress.lng}
+					/>
+				</>
 			) : (
 				"loading Google Maps"
-			)} */}
+			)}
 		</div>
 	);
 };
-export default Vote;
+const mapStateToProps = reduxState => {
+	return reduxState;
+};
+
+export default connect(mapStateToProps)(Vote);
