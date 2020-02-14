@@ -4,7 +4,7 @@ import "./Header.scss";
 import { useTheme } from "@material-ui/core/styles";
 
 const Header = () => {
-  const theme = useTheme();
+  // const theme = useTheme();
 
   return (
     <div className="header-container">

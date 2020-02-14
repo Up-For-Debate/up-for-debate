@@ -5,7 +5,6 @@
 .header-container {
   height: 5vh;
   width: 100vw;
-  background-color: rgba(211, 211, 211, 0.5);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -14,8 +13,4 @@
 
 a {
   text-decoration: none;
-}
-
-.header-home {
-  color: darkgrey;
 }

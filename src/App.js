@@ -3,7 +3,7 @@ import routes from "./routes.js";
 import Header from "./Components/Header/Header";
 import "./App.css";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
-import { ThemeProvide } from "@material-ui/core";
+import { useTheme } from "@material-ui/core/styles";
 
 function App() {
   const theme = createMuiTheme({
@@ -13,6 +13,10 @@ function App() {
       },
       secondary: {
         main: "#BC051B"
+      },
+      success: {
+        main: "#D3D3D3",
+        opacity: ".5"
       }
     }
   });
