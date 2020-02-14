@@ -14,7 +14,6 @@ a {
 
 .header-home {
   margin-left: 5%;
-  font-size: 1.15rem;
 }
 
 .header-explore {
@@ -23,5 +22,17 @@ a {
   margin-right: 5%;
   display: flex;
   justify-content: space-between;
+  font-size: 1.15rem;
+}
+
+#home-button {
+  font-size: 1.15rem;
+}
+
+#explore {
+  font-size: 1.15rem;
+}
+
+#quiz {
   font-size: 1.15rem;
 }

@@ -21,11 +21,17 @@ const Header = () => {
   return (
     <Paper className={classes.paper} id="header-paper" elevation="5">
       <div className="header-home">
-        <Link>Home</Link>
+        <Button id="home-button">
+          <Link>Home</Link>
+        </Button>
       </div>
       <div className="header-explore">
-        <Link id="explore">Explore</Link>
-        <Link>Quiz</Link>
+        <Button id="explore">
+          <Link>Explore</Link>
+        </Button>
+        <Button>
+          <Link id="quiz">Quiz</Link>
+        </Button>
       </div>
     </Paper>
   );
