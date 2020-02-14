@@ -3,7 +3,7 @@ import routes from "./routes.js";
 import Header from "./Components/Header/Header";
 import "./App.css";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
-import { ThemeProvide } from "@material-ui/core";
+import { useTheme } from "@material-ui/core/styles";
 
 function App() {
   const theme = createMuiTheme({
@@ -20,7 +20,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-        <Header />
+        <Header id="header" />
         {routes}
       </div>
     </ThemeProvider>

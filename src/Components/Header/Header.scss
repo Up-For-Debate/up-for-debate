@@ -2,20 +2,37 @@
   margin: 0;
   padding: 0%;
 }
-.header-container {
-  height: 5vh;
-  width: 100vw;
-  background-color: rgba(211, 211, 211, 0.5);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-family: "Muli", sans-serif;
+#header-paper {
+  background-color: rgba(300, 300, 300, 0.35);
 }
 
 a {
   text-decoration: none;
+  color: #182141;
+  font-weight: 600;
 }
 
 .header-home {
-  color: darkgrey;
+  margin-left: 5%;
+}
+
+.header-explore {
+  // height: 50vh;
+  width: 10%;
+  margin-right: 5%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.15rem;
+}
+
+#home-button {
+  font-size: 1.15rem;
+}
+
+#explore {
+  font-size: 1.15rem;
+}
+
+#quiz {
+  font-size: 1.15rem;
 }
