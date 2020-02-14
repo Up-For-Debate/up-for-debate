@@ -1,27 +1,33 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Header.scss";
-import { useTheme } from "@material-ui/core/styles";
+import { useTheme, makeStyles } from "@material-ui/core";
+import { Paper, Button } from "@material-ui/core";
 
 const Header = () => {
-  // const theme = useTheme();
-
+  const theme = useTheme();
+  const useStyles = makeStyles({
+    paper: {
+      height: "6vh",
+      width: "100vw",
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
+      fontFamily: "Muli, sans-serif",
+      position: "fixed"
+    }
+  });
+  const classes = useStyles();
   return (
-    <div className="header-container">
-      <div>
-        <Link to="/">
-          <h4 className="header-home">Home</h4>
-        </Link>
+    <Paper className={classes.paper} id="header-paper" elevation="5">
+      <div className="header-home">
+        <Link>Home</Link>
       </div>
-      <div>
-        <Link to="/quiz">
-          <h4>Quiz</h4>
-        </Link>
-        <Link to="/explore">
-          <h4>Explore</h4>
-        </Link>
+      <div className="header-explore">
+        <Link id="explore">Explore</Link>
+        <Link>Quiz</Link>
       </div>
-    </div>
+    </Paper>
   );
 };
 

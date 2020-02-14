@@ -13,10 +13,6 @@ function App() {
       },
       secondary: {
         main: "#BC051B"
-      },
-      success: {
-        main: "#D3D3D3",
-        opacity: ".5"
       }
     }
   });
@@ -24,7 +20,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-        <Header />
+        <Header id="header" />
         {routes}
       </div>
     </ThemeProvider>
