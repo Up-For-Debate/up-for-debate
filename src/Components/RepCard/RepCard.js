@@ -87,28 +87,26 @@ const RepCard = props => {
       </CardContent>
 
       <CardContent>
-        {props.person.socialMedia ? (
-          <a
-            target="_blank"
-            rel="noopener"
-            href={`https://www.facebook.com/${props.person.socialMedia[0].id}`}
-          >
-            <FacebookIcon fontSize="large" color="primary" />
-          </a>
-        ) : (
-          <div></div>
-        )}
-        {props.person.socialMedia ? (
-          <a
-            target="_blank"
-            rel="noopener"
-            href={`https://www.twitter.com/${props.person.socialMedia[0].id}`}
-          >
-            <TwitterIcon fontSize="large" style={{ color: "#1da1f1" }} />
-          </a>
-        ) : (
-          <div></div>
-        )}
+        {props.person.socialMedia ?
+        (props.person.socialMedia.map((e, i) => {
+          if (e.type === "Facebook") {
+            return(<a
+              target="_blank"
+              rel="noopener"
+              href={`https://www.facebook.com/${props.person.socialMedia[i].id}`}
+            >
+              <FacebookIcon fontSize="large" color="primary" />
+            </a>);
+          } else if (e.type === "Twitter") {
+            return (<a
+              target="_blank"
+              rel="noopener"
+              href={`https://www.twitter.com/${props.person.socialMedia[i].id}`}
+            >
+              <TwitterIcon fontSize="large" style={{ color: "#1da1f1" }} />
+            </a>);
+          }
+        })): <></>}
       </CardContent>
     </Card>
   );
