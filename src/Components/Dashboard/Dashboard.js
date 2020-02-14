@@ -3,23 +3,36 @@ import React from "react";
 import Representatives from "../Representative/Representatives";
 import CountyMap from "../CountyMap/CountyMap";
 import { Grid, Paper, Button } from "@material-ui/core";
-import { useTheme, makeStyles } from '@material-ui/core/styles'
+import { useTheme, makeStyles } from "@material-ui/core/styles";
+import RegisterToVote from '../RegisterToVote/RegisterToVote'
 
 const Dashboard = () => {
-
-  const theme = useTheme()
+  const theme = useTheme();
   const useStyles = makeStyles({
-    paper: {height: 75, display: "flex", justifyContent: "space-evenly", alignItems: "center" } 
-  })
-  const classes = useStyles()
-  
+    paper: {
+      height: 75,
+      display: "flex",
+      justifyContent: "space-evenly",
+      alignItems: "center"
+    }
+  });
+  const classes = useStyles();
+
   return (
-    <Grid container className="dashboard" theme={theme} style={{backgroundColor: theme.palette.primary.light}} >
+    <Grid
+      container
+      className="dashboard"
+      theme={theme}
+      style={{ backgroundColor: theme.palette.primary.light }}
+    >
       <Grid item xs={12} className="link-area">
-        <Paper theme={theme} elevation={3} style={{backgroundColor: theme.palette.primary.dark}} className={classes.paper} >
-          <Button variant="contained" color="secondary">
-            Register to vote
-          </Button> 
+        <Paper
+          theme={theme}
+          elevation={3}
+          style={{ backgroundColor: theme.palette.primary.dark }}
+          className={classes.paper}
+        >
+          <RegisterToVote />
           <Button variant="contained" color="secondary">
             Where to vote
           </Button>
