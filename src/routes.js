@@ -12,6 +12,7 @@ import Representatives from "./Components/Representative/Representatives";
 import SearchInput from "./Components/SearchInput/SearchInput";
 // import Quiz from "./Components/Quiz/Quiz";
 import Vote from "./Components/Vote/Vote";
+import GoogleMapComponent from "./Components/Vote/GoogleMapComponent";
 // import StateMap from "./Components/Vote/Vote";
 
 export default (
