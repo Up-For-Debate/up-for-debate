@@ -18,7 +18,7 @@ const center = {
 };
 
 const GoogleMapComponent = props => {
-	console.log(props.formatedLocation);
+	console.log(props.pollingLocation);
 	return (
 		<LoadScript id="script-loader" googleMapsApiKey={REACT_APP_GOOGLE_MAPS_KEY}>
 			<GoogleMap
@@ -43,6 +43,7 @@ const GoogleMapComponent = props => {
 							padding: 15
 						}}
 					>
+						<h2>{props.pollingLocation.locationName}</h2>
 						<h2>{props.formatedLocation}</h2>
 						<a
 							target="_blank"

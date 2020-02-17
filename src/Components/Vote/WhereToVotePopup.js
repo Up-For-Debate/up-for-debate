@@ -34,7 +34,7 @@ const WhereToVotePopup = props => {
 				<input onChange={e => setStreetAddress(e.target.value)} />
 			</p>
 			<p>City: {props.city}</p>
-			<p>State: {props.state}</p>
+			<p>State: {props.usState}</p>
 			<p>
 				Zipcode: <input onChange={e => setZipcode(e.target.value)} />
 			</p>
