@@ -19,13 +19,14 @@ const WhereToVotePopup = props => {
 				background: "white",
 				height: "400px",
 				width: "325px",
-				position: "absolute",
-
+				position: "fixed",
 				display: "flex",
 				flexDirection: "column",
 				justifyContent: "space-around",
 				alignItems: "flex-start",
-				zIndex: "999"
+				zIndex: "999",
+				boxShadow: "4px 4px 4px 4px rgba(0, 0, 0, .5)",
+				padding: "10px"
 			}}
 		>
 			Please Enter Your Full Address:
