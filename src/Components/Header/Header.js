@@ -19,14 +19,16 @@ const Header = () => {
   const theme = useTheme();
   const useStyles = makeStyles({
     paper: {
-      height: "6vh",
-      width: "100vw",
-      display: "flex",
-      justifyContent: "space-between",
-      alignItems: "center",
-      fontFamily: "Muli, sans-serif",
-      position: "fixed"
-    },
+			height: "6vh",
+			width: "100vw",
+			display: "flex",
+			justifyContent: "space-between",
+			alignItems: "center",
+			fontFamily: "Muli, sans-serif",
+			position: "sticky",
+			top: "0",
+			zIndex: "1000"
+		},
     list: {
       width: 250
     }
@@ -42,23 +44,15 @@ const Header = () => {
     <div
       className={classes.list}
       role="presentation"
-      onClick={toggleDrawer()}
-      onKeyDown={toggleDrawer()}
+      onClick={toggleDrawer}
+      onKeyDown={toggleDrawer}
     >
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+        {['Home', 'Explore', 'Quiz'].map((text, index) => (
           <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
+            <Link>
+              <ListItemText primary={text} />
+            </Link>
           </ListItem>
         ))}
       </List>
@@ -93,7 +87,7 @@ const Header = () => {
     </Paper>
     <div>
     <Drawer anchor="right" open={drawerState} >
-        {sideList}
+        {sideList('right')}
       </Drawer>
     </div>
     </>
