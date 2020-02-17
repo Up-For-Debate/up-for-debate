@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import { Link, withRouter } from "react-router-dom";
 import "./Header.scss";
 import { useTheme, makeStyles, IconButton } from "@material-ui/core";
-import { Paper, Button, Grid, Drawer, Hidden } from "@material-ui/core";
+import { Paper, Button, Drawer, Hidden } from "@material-ui/core";
 import MenuRoundedIcon from '@material-ui/icons/MenuRounded';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -73,9 +73,7 @@ const Header = props => {
   return (
     <>
     <Paper className={classes.paper} id="header-paper" elevation="5">
-          <Button id="home-button" onClick={ () => props.history.push(`/`)}>
-            LOGO GOES HERE
-          </Button>
+            <div className='logo-space' button onClick={ () => props.history.push('/')} > </div>
 
           <div 
             // className="header-explore" 

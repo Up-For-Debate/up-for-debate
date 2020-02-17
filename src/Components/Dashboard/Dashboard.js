@@ -6,6 +6,7 @@ import CountyMap from "../CountyMap/CountyMap";
 import { Grid, Paper, Button } from "@material-ui/core";
 import { useTheme, makeStyles } from "@material-ui/core/styles";
 import RegisterToVote from "../RegisterToVote/RegisterToVote";
+import './Dashboard.scss'
 
 const Dashboard = () => {
 	const [displayPopup, setDisplayPopup] = useState(false);
@@ -26,6 +27,7 @@ const Dashboard = () => {
 			className="dashboard"
 			theme={theme}
 			style={{ backgroundColor: theme.palette.primary.light }}
+			spacing={3}
 		>
 			<Grid item xs={12} className="link-area">
 				<Paper
@@ -48,10 +50,10 @@ const Dashboard = () => {
 					) : null}
 				</Paper>
 			</Grid>
-			<Grid item xs={8} className="rep-area">
+			<Grid item sm={12} md={8} className="rep-area">
 				<Representatives />
 			</Grid>
-			<Grid item xs={4} className="map-area">
+			<Grid item sm={12} md={4} className="map-area" >
 				<CountyMap />
 			</Grid>
 		</Grid>

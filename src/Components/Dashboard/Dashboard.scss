@@ -1,0 +1,11 @@
+@media (max-width: 960px) {
+  .map-area { 
+    display: none
+  }
+}
+  @media (min-width: 960px) {
+    .map-area {
+      display: block
+    }
+  }
+
