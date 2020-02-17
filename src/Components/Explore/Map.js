@@ -18,7 +18,7 @@ function Map({ states, setStateSelected,stateSelected, getCityState:propsGetCity
     const svg = select(svgRef.current);
 
     let { width, height } =
-      dimensions || wrapperRef.current.getBoundingClientRect();
+    dimensions || wrapperRef.current.getBoundingClientRect();
 
     const projection = geoAlbersUsa()
       //set view to either selected state or whole map if no selected state
@@ -27,7 +27,7 @@ function Map({ states, setStateSelected,stateSelected, getCityState:propsGetCity
         selectedState ? selectedState : states
       )
       //prevents graphical tearing on zoom
-      .precision(2);
+      .precision(1000);
     const pathGenerator = geoPath().projection(projection);
     //D3 svg render
     
@@ -49,7 +49,7 @@ function Map({ states, setStateSelected,stateSelected, getCityState:propsGetCity
       })
       //transition for zoom
       .transition()
-      .duration(1000)
+      .duration(1500)
       //css classes and id
       .attr("class", "state")
       .attr("id", feature => feature.properties.NAME)
@@ -58,7 +58,7 @@ function Map({ states, setStateSelected,stateSelected, getCityState:propsGetCity
       if(stateSelected){
         propsGetCityState(null, stateSelected)
       }
-  }, [setStateSelected, stateSelected, states, dimensions, selectedState]);
+  }, [ stateSelected, states, dimensions, selectedState]);
 
   return (
     <>
