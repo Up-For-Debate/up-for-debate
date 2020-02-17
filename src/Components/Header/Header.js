@@ -1,20 +1,21 @@
 import React, {useState} from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import "./Header.scss";
 import { useTheme, makeStyles, IconButton } from "@material-ui/core";
-import { Paper, Button, Grid, Drawer } from "@material-ui/core";
+import { Paper, Button, Grid, Drawer, Hidden } from "@material-ui/core";
 import MenuRoundedIcon from '@material-ui/icons/MenuRounded';
 import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+import HomeRoundedIcon from '@material-ui/icons/HomeRounded';
+import ExploreIcon from '@material-ui/icons/Explore';
+import HelpIcon from '@material-ui/icons/Help';
 
 
-const Header = () => {
-  const [drawerState, setDrawerState] = useState(false)
+
+const Header = props => {
+  const [drawerState, setDrawerState] = useState({right: false})
 
   const theme = useTheme();
   const useStyles = makeStyles({
@@ -36,25 +37,35 @@ const Header = () => {
   const classes = useStyles();
 
 
-  const toggleDrawer =  () => {
-    setDrawerState(!drawerState)
-  }
+  const toggleDrawer = (side, open) => event => {
+    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+      return;
+    }
+
+    setDrawerState({ ...drawerState, [side]: open });
+  };
 
   const sideList = side => (
     <div
       className={classes.list}
       role="presentation"
-      onClick={toggleDrawer}
-      onKeyDown={toggleDrawer}
+      onClick={toggleDrawer(side, false)}
+      onKeyDown={toggleDrawer(side, false)}
     >
       <List>
-        {['Home', 'Explore', 'Quiz'].map((text, index) => (
-          <ListItem button key={text}>
-            <Link>
-              <ListItemText primary={text} />
-            </Link>
+          <ListItem button key={'home'} onClick={ () => props.history.push(`/`)}>
+              <ListItemIcon><HomeRoundedIcon/></ListItemIcon>
+              <ListItemText primary={'Home'} />
           </ListItem>
-        ))}
+          <ListItem button key={'explore'} onClick={ () => props.history.push(`/explore`)}>
+            <ListItemIcon><ExploreIcon/></ListItemIcon>
+            <ListItemText primary={'Explore'} />
+
+          </ListItem>
+          <ListItem button key={'quiz'} onClick={ () => props.history.push(`/quiz`)}>
+            <ListItemIcon><HelpIcon /></ListItemIcon>
+            <ListItemText primary={'Quiz'}/>
+          </ListItem>
       </List>
     </div>
   );
@@ -63,30 +74,32 @@ const Header = () => {
   return (
     <>
     <Paper className={classes.paper} id="header-paper" elevation="5">
-      <Grid container spacing={3}>
-
-        <Grid item xs={3} sm={3} md={3} lg={3} xl={3} className="header-home">
-          <Button id="home-button">
-            <Link>Home</Link>
+          <Button id="home-button" onClick={ () => props.history.push(`/`)}>
+            Home
           </Button>
-        </Grid>
 
-        <div className="header-explore">
-          <Button id="explore">
-            <Link>Explore</Link>
-          </Button>
-          <Button>
-            <Link id="quiz">Quiz</Link>
-          </Button>
-        </div>
-        <IconButton onClick={ toggleDrawer }>
-          <MenuRoundedIcon />
-        </IconButton>
+          <div 
+            // className="header-explore" 
+            style={{'justify-content':'flex-end'}} >
+        <Hidden xsDown>
+            <Button id="explore" onClick={ () => props.history.push(`/explore`)}>
+              <Link>Explore</Link>
+            </Button>
+            <Button>
+              <Link id="quiz" onClick={ () => props.history.push(`/quiz`)}>Quiz</Link>
+            </Button>
+        </Hidden>
+          </div>
 
-      </Grid>
+          <div className="hidden-small">
+            <IconButton onClick={toggleDrawer( 'right', true ) }>
+              <MenuRoundedIcon />
+            </IconButton>
+          </div>
+
     </Paper>
     <div>
-    <Drawer anchor="right" open={drawerState} >
+    <Drawer anchor="right" open={drawerState.right} onClose={toggleDrawer('right', false)}>
         {sideList('right')}
       </Drawer>
     </div>
@@ -94,4 +107,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default withRouter(Header);
