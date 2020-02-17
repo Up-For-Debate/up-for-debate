@@ -13,7 +13,6 @@ import ExploreIcon from '@material-ui/icons/Explore';
 import HelpIcon from '@material-ui/icons/Help';
 
 
-
 const Header = props => {
   const [drawerState, setDrawerState] = useState({right: false})
 
@@ -75,7 +74,7 @@ const Header = props => {
     <>
     <Paper className={classes.paper} id="header-paper" elevation="5">
           <Button id="home-button" onClick={ () => props.history.push(`/`)}>
-            Home
+            LOGO GOES HERE
           </Button>
 
           <div 
