@@ -36,3 +36,10 @@ a {
 #quiz {
   font-size: 1.15rem;
 }
+
+@media (min-width: 600px) {
+  .hidden-small { 
+    display: none
+  }
+
+}
