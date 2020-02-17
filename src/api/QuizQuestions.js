@@ -1,4 +1,3 @@
-import React from "react";
 const quizQuestions = [
   {
     question: "What quote do you agree with most?",
