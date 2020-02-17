@@ -3,6 +3,7 @@ import GoogleMapComponent from "./GoogleMapComponent";
 import axios from "axios";
 import RegisterToVote from "../RegisterToVote/RegisterToVote";
 import { GoogleMap, LoadScript } from "@react-google-maps/api";
+import Moment from "react-moment";
 import { connect } from "react-redux";
 const { REACT_APP_GOOGLE_MAPS_KEY } = process.env;
 
@@ -16,7 +17,9 @@ const Vote = props => {
 	const [pollingFormated, setPollingFormtated] = useState("");
 	useEffect(() => {
 		axios
-			.get(`/api/elections?address=204 Newgate Cir, Alabaster, AL 35007`)
+			.get(
+				`/api/elections?address=${props.streetAddress}, ${props.city}, ${props.usState} ${props.zipcode}`
+			)
 			.then(res => {
 				setElections(res.data);
 			})
@@ -65,7 +68,7 @@ const Vote = props => {
 			{federalElection ? (
 				<div>
 					<h2>{federalElection.name}:</h2>{" "}
-					<h2>{federalElection.electionDay}</h2>
+					<Moment format="MMMM Do YYYY">{federalElection.electionDay}</Moment>
 				</div>
 			) : null}
 			{stateElections ? (
@@ -116,6 +119,7 @@ const Vote = props => {
 				<>
 					<h2>Looking For Where to Vote?</h2>
 					<GoogleMapComponent
+						pollingLocation={pollingLocation[0].address}
 						formatedLocation={pollingFormated}
 						lat={geoCodeAddress.lat}
 						lng={geoCodeAddress.lng}
