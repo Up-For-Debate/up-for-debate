@@ -18,18 +18,22 @@ var T = new Twit({
 });
 module.exports = {
 	getRepresentatives: async (req, res) => {
-		const { address } = req.query;
+		const { address, session } = req.query;
+		if(session){
+			req.session.user = {
+				address
+			}
+		}
+		console.log(req.session.user, 'getRepresentatives')
+		// console.log(address)
 		const representatives = await axios.get(
-			`https://www.googleapis.com/civicinfo/v2/representatives?key=${API_KEY}&address=${address}}`
+			`https://www.googleapis.com/civicinfo/v2/representatives?key=${API_KEY}&address=${address === `City  State` ? req.session.user.address : address}}`
 		);
-		req.session.address = {
-			address: req.query.address
-		};
 		res.status(200).send(representatives.data);
 	},
 	getRepsPicture: async (req, res) => {
 		const { handle } = req.query;
-		console.log("hello");
+		// console.log("hello");
 		T.get("users/show", { screen_name: `${handle}` }, function(
 			err,
 			data,
@@ -37,7 +41,7 @@ module.exports = {
 		) {
 			let profileImage = data.profile_image_url_https;
 			if (profileImage) {
-				console.log(profileImage);
+				// console.log(profileImage);
 				let profileImageTwo = profileImage
 					.split("_normal")
 					.toString()
@@ -47,5 +51,25 @@ module.exports = {
 				res.status(200).send(null);
 			}
 		});
+	},
+	setAddress: (req,res) => {
+		const {address }  = req.query
+		console.log('in setAddress')
+		console.log(address)
+		req.session.user = {
+			address
+		}
+		console.log(req.session.user, 'setAddress')
+		// console.log(req.session.user)
+		res.status(200).send(req.session.user)
+		
+	},
+	getAddress: (req, res) => {
+		
+		// console.log(req.session, 'getAddress')
+		res.status(200).send(req.session.user.address)
 	}
 };
+
+
+

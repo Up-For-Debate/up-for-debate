@@ -5,29 +5,45 @@ import counties from "../../assets/countiesSmall.json";
 import states from "../../assets/states.json";
 import stateNumbers from "./stateNumber.js";
 import { connect } from "react-redux";
+import axios from "axios";
 
 const CountyMap = props => {
-
-  const filterCountyName =(countyName)=> {
-    const split = countyName.split(' ')
-    const string = split.toString().replace(',', '-')
-    return string
-  }
-  
+  const { usState } = props;
+  const [backup, setBackup] = useState("");
+  const filterCountyName = countyName => {
+    const split = countyName.split(" ");
+    const string = split.toString().replace(",", "-");
+    return string;
+  };
 
   console.log(props);
   const svgRef = useRef();
   const wrapperRef = useRef();
   let dimensions = useResizeObserver(wrapperRef);
-  //change to null post testing
+
   const [selectedStateNum, setSelectedStateNum] = useState("");
   useEffect(() => {
-    setSelectedStateNum(
-      stateNumbers.reduce(
-        (acc, e) => (e.state === props.usState ? acc + e.number : acc),
-        ""
-      )
-    );
+    if (props.usState) {
+      setSelectedStateNum(
+        stateNumbers.find(
+          element => element.state.toLowerCase() === props.usState.toLowerCase()
+        ).number
+      );
+    } else {
+      axios.get("/api/address").then(res => {
+        const split = res.data.split(" ");
+        const splitIndex = split.indexOf("State");
+        split.splice(0, splitIndex + 1);
+        const back = split.toString().replace(",", " ");
+        setBackup(back);
+        setSelectedStateNum(
+          stateNumbers.find(
+            element =>
+              element.state.toLowerCase() === back.toLowerCase()
+          ).number
+        );
+      });
+    }
     const selectedState = states.features.filter(
       feature => feature.properties.STATEFP === selectedStateNum
     );
@@ -56,7 +72,10 @@ const CountyMap = props => {
       .join("path")
       .attr("class", "county")
       // .attr('class', feature => selectedState === feature.properties.STATEFP ? 'selected-state' : 'not-selected-state')
-      .attr("id", feature => filterCountyName(feature.properties.NAME)+'-county')
+      .attr(
+        "id",
+        feature => filterCountyName(feature.properties.NAME) + "-county"
+      )
       .attr("d", feature => pathGenerator(feature));
   }, [selectedStateNum]);
   return (
