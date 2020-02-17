@@ -19,7 +19,7 @@ const Header = props => {
   const theme = useTheme();
   const useStyles = makeStyles({
     paper: {
-			height: "40px",
+			height: "6vh",
 			width: "100vw",
 			display: "flex",
 			justifyContent: "space-between",
@@ -73,9 +73,7 @@ const Header = props => {
   return (
     <>
     <Paper className={classes.paper} id="header-paper" elevation="5">
-            <div className='logo-space' button onClick={ () => props.history.push('/')} >
-          
-            </div>
+            <div className='logo-space' button onClick={ () => props.history.push('/')} > </div>
 
           <div 
             // className="header-explore" 

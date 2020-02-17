@@ -10,7 +10,9 @@ const Landing = () => {
   const useStyles = makeStyles({
     paper: {
       height: 300,
-      width: "31%",
+      width: "58%",
+      minWidth: 360,
+      maxWidth: 600,
       marginTop: "5%",
       display: "flex",
       flexDirection: "column",

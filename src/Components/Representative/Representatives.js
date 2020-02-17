@@ -34,12 +34,9 @@ const Representatives = props => {
     setLoading(true);
     let { city, usState } = props;
     if (city !== "" && usState !== "") {
-      console.log('inside if')
       axios
         .get(`/api/representatives?address=City ${city} State ${usState}&session=true`)
-        .then(res => {
-          // uncomment the above line and delete the below line when we no longer want to do styling/changes to representatives or rep cards
-          // axios.get(`/api/representatives?address=vineyard utah`).then(res => {
+        .then(res => {  
           setOffices(res.data.offices);
           setOfficals(res.data.officials);
           setLoading(false);
@@ -60,13 +57,10 @@ const Representatives = props => {
     
   };}
   const connectReps = () => {
-    console.warn("connect Reps fired");
     const connectedReps = offices
       .map(ele => {
         return ele.officialIndices.map(element => {
-          console.log(element);
           if (officials[element].address) {
-            // console.log(officials[element].address);
             var repAddress = officials[element].address[0];
           }
           if (officials[element].urls) {
@@ -91,13 +85,12 @@ const Representatives = props => {
         });
       })
       .flat();
-    console.log(connectedReps);
     let countyReps = connectedReps
       .filter(ele => ele.divisionId.includes("county"))
       .map(rep => {
         return (
           <>
-            <Grid item xs={4}>
+            <Grid item xs={12} sm={6}>
               <RepCard person={rep} />
             </Grid>
             <style>{`#${filterRepName(
@@ -114,7 +107,7 @@ const Representatives = props => {
       )
       .map(rep => {
         return (
-          <Grid item xs={4}>
+          <Grid item xs={12} sm={6}>
             <RepCard person={rep} />
           </Grid>
         );
@@ -127,13 +120,13 @@ const Representatives = props => {
       )
       .map(rep => {
         return (
-          <Grid item xs={4}>
+          <Grid item xs={12} sm={6} >
             <RepCard person={rep} />
           </Grid>
         );
       });
     return (
-      <Grid container>
+      <Grid container spacing={2}>
         <Grid item xs={12}>
           <Button color="primary">
             <Link to="#county-rep">County Info</Link>
