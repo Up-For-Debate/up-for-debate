@@ -11,7 +11,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import HomeRoundedIcon from '@material-ui/icons/HomeRounded';
 import ExploreIcon from '@material-ui/icons/Explore';
 import HelpIcon from '@material-ui/icons/Help';
-
+// import logo_ufd from '../../assets/icons/logo_ufd.png'
 
 const Header = props => {
   const [drawerState, setDrawerState] = useState({right: false})
@@ -19,7 +19,7 @@ const Header = props => {
   const theme = useTheme();
   const useStyles = makeStyles({
     paper: {
-			height: "6vh",
+			height: "40px",
 			width: "100vw",
 			display: "flex",
 			justifyContent: "space-between",
@@ -73,9 +73,9 @@ const Header = props => {
   return (
     <>
     <Paper className={classes.paper} id="header-paper" elevation="5">
-          <Button id="home-button" onClick={ () => props.history.push(`/`)}>
-            LOGO GOES HERE
-          </Button>
+            <div className='logo-space' button onClick={ () => props.history.push('/')} >
+          
+            </div>
 
           <div 
             // className="header-explore" 

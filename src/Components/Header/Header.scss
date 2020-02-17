@@ -43,3 +43,14 @@ a {
   }
 
 }
+
+.logo-space {
+  background-image: url('../../assets/icons/logo_ufd.png');
+  background-size: cover;
+  height: 40px;
+  width: 47.7px;
+}
+
+.logo-space:hover {
+  cursor: pointer
+}
