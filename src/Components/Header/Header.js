@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import { Link, withRouter } from "react-router-dom";
 import "./Header.scss";
 import { useTheme, makeStyles, IconButton } from "@material-ui/core";
-import { Paper, Button, Grid, Drawer, Hidden } from "@material-ui/core";
+import { Paper, Button, Drawer, Hidden } from "@material-ui/core";
 import MenuRoundedIcon from '@material-ui/icons/MenuRounded';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -11,7 +11,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import HomeRoundedIcon from '@material-ui/icons/HomeRounded';
 import ExploreIcon from '@material-ui/icons/Explore';
 import HelpIcon from '@material-ui/icons/Help';
-// import logo_ufd from '../../assets/icons/logo_ufd.png'
+
 
 const Header = props => {
   const [drawerState, setDrawerState] = useState({right: false})
