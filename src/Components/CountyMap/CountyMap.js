@@ -8,8 +8,6 @@ import { connect } from "react-redux";
 import axios from "axios";
 
 const CountyMap = props => {
-  const { usState } = props;
-  const [backup, setBackup] = useState("");
   const filterCountyName = countyName => {
     const split = countyName.split(" ");
     const string = split.toString().replace(",", "-");
@@ -35,7 +33,6 @@ const CountyMap = props => {
         const splitIndex = split.indexOf("State");
         split.splice(0, splitIndex + 1);
         const back = split.toString().replace(",", " ");
-        setBackup(back);
         setSelectedStateNum(
           stateNumbers.find(
             element =>
