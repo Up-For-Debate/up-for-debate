@@ -3,15 +3,16 @@ import React, { useState } from "react";
 import WhereToVotePopup from "../Vote/WhereToVotePopup";
 import Representatives from "../Representative/Representatives";
 import CountyMap from "../CountyMap/CountyMap";
+import { withRouter } from "react-router-dom";
 import Loader from "react-loader-spinner";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
-
+import { connect } from "react-redux";
 import { Grid, Paper, Button } from "@material-ui/core";
 import { useTheme, makeStyles } from "@material-ui/core/styles";
 import RegisterToVote from "../RegisterToVote/RegisterToVote";
 import "./Dashboard.scss";
 
-const Dashboard = () => {
+const Dashboard = props => {
 	const [displayPopup, setDisplayPopup] = useState(false);
 	const [isLoading, setIsLoading] = useState(true);
 	const theme = useTheme();
@@ -24,7 +25,11 @@ const Dashboard = () => {
 		}
 	});
 	const classes = useStyles();
-	console.log(displayPopup);
+	console.log(props.usState);
+	if (props.usState === "") {
+		alert("Please Enter A Location");
+		props.history.push("/");
+	}
 	return (
 		<>
 			{isLoading ? (
@@ -89,4 +94,8 @@ const Dashboard = () => {
 	);
 };
 
-export default Dashboard;
+const mapStateToProps = reduxState => {
+	return reduxState;
+};
+
+export default connect(mapStateToProps)(withRouter(Dashboard));
