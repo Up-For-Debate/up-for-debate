@@ -29,7 +29,7 @@ const Dashboard = () => {
 			container
 			className="dashboard"
 			theme={theme}
-			style={{ backgroundColor: theme.palette.primary.light, marginTop: "6vh" }}
+			style={{ backgroundColor: '#ebebeb', marginTop: "6vh" }}
 			spacing={3}
 		>
 			<Grid item xs={12} className="link-area">
