@@ -1,6 +1,7 @@
 .explore-header {
-  height: 5vh;
+  height: 9vh;
   width: 100vw;
+  font-size: 1.4rem;
   display: flex;
   justify-content: center;
   align-items: center;
