@@ -23,32 +23,44 @@ const Representatives = props => {
       getReps();
     }
   }, [props.usState]);
+
   useEffect(() => {
     if (offices[0] && officials[0]) {
       connectReps();
     }
   }, [officials]);
+
   const getReps = () => {
     setLoading(true);
     let { city, usState } = props;
+    if (city !== "" && usState !== "") {
+      axios
+        .get(`/api/representatives?address=City ${city} State ${usState}&session=true`)
+        .then(res => {  
+          setOffices(res.data.offices);
+          setOfficals(res.data.officials);
+          setLoading(false);
+        })
+      // axios.put(`/api/address?address=City ${city} State ${usState}`).then(res =>{
+      //   }
+      // )
+    } else {
+      axios
+        .get(`/api/representatives?address=City ${city} State ${usState}`)
+        .then(res => {
+          // uncomment the above line and delete the below line when we no longer want to do styling/changes to representatives or rep cards
+          // axios.get(`/api/representatives?address=vineyard utah`).then(res => {
+          setOffices(res.data.offices);
+          setOfficals(res.data.officials);
+          setLoading(false);
+        });
     
-      axios.get(`/api/representatives?address=City ${city} State ${usState}`).then(res => {
-        // uncomment the above line and delete the below line when we no longer want to do styling/changes to representatives or rep cards
-        // axios.get(`/api/representatives?address=vineyard utah`).then(res => {
-        setOffices(res.data.offices);
-        setOfficals(res.data.officials);
-        setLoading(false);
-      });
-    
-  };
+  };}
   const connectReps = () => {
-    console.warn("connect Reps fired");
     const connectedReps = offices
       .map(ele => {
         return ele.officialIndices.map(element => {
-          console.log(element)
           if (officials[element].address) {
-            // console.log(officials[element].address);
             var repAddress = officials[element].address[0];
           }
           if (officials[element].urls) {
@@ -73,13 +85,12 @@ const Representatives = props => {
         });
       })
       .flat();
-    console.log(connectedReps);
     let countyReps = connectedReps
       .filter(ele => ele.divisionId.includes("county"))
       .map(rep => {
         return (
           <>
-            <Grid item xs={4}>
+            <Grid item xs={12} sm={6}>
               <RepCard person={rep} />
             </Grid>
             <style>{`#${filterRepName(
@@ -96,7 +107,7 @@ const Representatives = props => {
       )
       .map(rep => {
         return (
-          <Grid item xs={4}>
+          <Grid item xs={12} sm={6}>
             <RepCard person={rep} />
           </Grid>
         );
@@ -109,13 +120,13 @@ const Representatives = props => {
       )
       .map(rep => {
         return (
-          <Grid item xs={4}>
+          <Grid item xs={12} sm={6} >
             <RepCard person={rep} />
           </Grid>
         );
       });
     return (
-      <Grid container>
+      <Grid container spacing={2}>
         <Grid item xs={12}>
           <Button color="primary">
             <Link to="#county-rep">County Info</Link>
