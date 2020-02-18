@@ -2,7 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 
 function Question(props) {
-  return <h2 className="question">{props.content}</h2>;
+  return (
+    <div className="question">
+      <h2 style={{ marginLeft: "2.5rem" }}>{props.content}</h2>
+    </div>
+  );
 }
 
 Question.propTypes = {
