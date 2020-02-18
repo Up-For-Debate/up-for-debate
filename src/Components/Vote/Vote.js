@@ -63,7 +63,6 @@ const Vote = props => {
 				});
 		}
 	};
-	console.log(geoCodeAddress);
 
 	return (
 		<div>
