@@ -10,7 +10,7 @@ import RegisterToVote from "./Components/RegisterToVote/RegisterToVote";
 import RepCard from "./Components/RepCard/RepCard";
 import Representatives from "./Components/Representative/Representatives";
 import SearchInput from "./Components/SearchInput/SearchInput";
-// import Quiz from "./Components/Quiz/Quiz";
+import QuizApp from "./Components/Quiz/QuizApp";
 import Vote from "./Components/Vote/Vote";
 import GoogleMapComponent from "./Components/Vote/GoogleMapComponent";
 // import StateMap from "./Components/Vote/Vote";
@@ -27,7 +27,7 @@ export default (
     <Route path="/registertovote" component={RegisterToVote} />
     <Route path="/representatives" component={Representatives} />
     <Route path="/searchinput" component={SearchInput} />
-    {/* <Route path="/quiz" component={Quiz} /> */}
+    <Route path="/quiz" component={QuizApp} />
     <Route path="/vote" component={Vote} />
   </Switch>
 );
