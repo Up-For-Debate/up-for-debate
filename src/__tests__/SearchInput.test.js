@@ -38,6 +38,7 @@ it('SearchInput will not allow submission without city and state', () => {
   )
   const button = getByTestId('submit-button')
   fireEvent.click(button)
+  
   expect(container.textContent).toContain('Please input valid city')
 
 })
