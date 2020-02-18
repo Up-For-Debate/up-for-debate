@@ -27,7 +27,11 @@ const Header = props => {
 			fontFamily: "Muli, sans-serif",
 			position: "sticky",
 			top: "0",
-			zIndex: "1000"
+      zIndex: "1000",
+      paddingLeft: 10,
+      // paddingRight: 10
+      
+    
 		},
     list: {
       width: 250
@@ -77,7 +81,7 @@ const Header = props => {
 
           <div 
             // className="header-explore" 
-            style={{'justify-content':'flex-end'}} >
+            style={{'justify-content':'flex-end', 'margin-right': "10px"}} >
         <Hidden xsDown>
             <Button id="explore" onClick={ () => props.history.push(`/explore`)}>
               <Link>Explore</Link>
@@ -88,7 +92,7 @@ const Header = props => {
         </Hidden>
           </div>
 
-          <div className="hidden-small">
+          <div className="hidden-small" style={{'margin-right': '10px'}}>
             <IconButton onClick={toggleDrawer( 'right', true ) }>
               <MenuRoundedIcon />
             </IconButton>
