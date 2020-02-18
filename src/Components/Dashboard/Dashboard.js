@@ -29,22 +29,6 @@ const Dashboard = () => {
 	const classes = useStyles();
 	console.log(displayPopup);
 	return (
-<<<<<<< HEAD
-		<Grid
-			container
-			className="dashboard"
-			theme={theme}
-			style={{ backgroundColor: '#ebebeb', marginTop: "6vh" }}
-			spacing={3}
-		>
-			<Grid item xs={12} className="link-area">
-				<Paper
-					theme={theme}
-					elevation={3}
-					style={{ backgroundColor: theme.palette.primary.dark }}
-					className={classes.paper}
-					square
-=======
 		<>
 			{isLoading ? (
 				<div
@@ -69,9 +53,8 @@ const Dashboard = () => {
 					container
 					className="dashboard"
 					theme={theme}
-					style={{ backgroundColor: theme.palette.primary.light }}
+					style={{ backgroundColor: '#ebebeb', marginTop: "6vh" }}
 					spacing={3}
->>>>>>> master
 				>
 					<Grid item xs={12} className="link-area">
 						<Paper
