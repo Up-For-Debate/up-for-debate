@@ -83,6 +83,7 @@ const SearchInput = props => {
 						/>
 						<IconButton
 							type="submit"
+							data-testid='submit-button'
 							aria-label="search"
 							onClick={e => handleSubmit(e)}
 						>
