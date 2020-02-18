@@ -5,6 +5,8 @@ import {
 	Marker,
 	OverlayView
 } from "@react-google-maps/api";
+import Loader from "react-loader-spinner";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 const { REACT_APP_GOOGLE_MAPS_KEY } = process.env;
 
 const mapContainerStyle = {
