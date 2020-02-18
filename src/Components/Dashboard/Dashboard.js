@@ -18,7 +18,10 @@ const Dashboard = props => {
 	const theme = useTheme();
 	const useStyles = makeStyles({
 		paper: {
+			position: "absolute",
+			top: "6vh",
 			height: 75,
+			width: "100vw",
 			display: "flex",
 			justifyContent: "space-evenly",
 			alignItems: "center"
@@ -55,7 +58,7 @@ const Dashboard = props => {
 					container
 					className="dashboard"
 					theme={theme}
-					style={{ backgroundColor: theme.palette.primary.light }}
+					style={{ backgroundColor: '#ebebeb', marginTop: "6vh" }}
 					spacing={3}
 				>
 					<Grid item xs={12} className="link-area">
