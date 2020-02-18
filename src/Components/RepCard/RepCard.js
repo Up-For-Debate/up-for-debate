@@ -11,9 +11,10 @@ import FacebookIcon from "@material-ui/icons/Facebook";
 import axios from "axios";
 
 const useStyles = makeStyles({
-<<<<<<< HEAD
   root: {
-    height: 325
+    height: 325,
+    background: "whitesmoke",
+    marginLeft: 10
   },
   media: {
     height: "125px",
@@ -21,19 +22,6 @@ const useStyles = makeStyles({
     marginTop: "10px",
     backgroundSize: "contain"
   }
-=======
-	root: {
-		height: 325,
-		background: 'whitesmoke',
-		marginLeft: 10
-	},
-	media: {
-		height: "125px",
-		width: "100%",
-		marginTop: "10px",
-		backgroundSize: "contain"
-	}
->>>>>>> master
 });
 
 const RepCard = props => {
@@ -67,7 +55,7 @@ const RepCard = props => {
               rel="noopener"
               href={`https://www.facebook.com/${props.person.socialMedia[i].id}`}
             >
-              <FacebookIcon fontSize="large" color="primary" />
+              <FacebookIcon fontSize="large" style={{ color: "#3b5998" }} />
             </a>
           );
         } else if (e.type === "Twitter") {

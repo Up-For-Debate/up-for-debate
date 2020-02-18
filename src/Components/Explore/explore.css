@@ -1,11 +1,10 @@
 .explore-header {
   height: 9vh;
   width: 100vw;
-  font-size: 1.4rem;
+  font-size: 2.7rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #444f56;
   color: white;
   font-family: "Merriweather", serif;
 }
