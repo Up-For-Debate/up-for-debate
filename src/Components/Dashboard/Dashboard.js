@@ -45,7 +45,9 @@ const Dashboard = () => {
 						Where to vote
 					</Button>
 
-					{displayPopup ? <WhereToVotePopup /> : null}
+					{displayPopup ? (
+						<WhereToVotePopup setDisplayPopup={setDisplayPopup} />
+					) : null}
 				</Paper>
 			</Grid>
 			<Grid item sm={12} md={8} className="rep-area">
