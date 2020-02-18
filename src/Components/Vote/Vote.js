@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import GoogleMapComponent from "./GoogleMapComponent";
 import axios from "axios";
 import RegisterToVote from "../RegisterToVote/RegisterToVote";
+import Loader from "react-loader-spinner";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import { GoogleMap, LoadScript } from "@react-google-maps/api";
 import Moment from "react-moment";
 import { connect } from "react-redux";
@@ -15,6 +17,7 @@ const Vote = props => {
 	const [stateElections, setStateElections] = useState({});
 	const [geoCodeAddress, setGeoCodeAddress] = useState("");
 	const [pollingFormated, setPollingFormtated] = useState("");
+	const [isLoading, setIsLoading] = useState(true);
 	useEffect(() => {
 		axios
 			.get(
@@ -22,6 +25,7 @@ const Vote = props => {
 			)
 			.then(res => {
 				setElections(res.data);
+				setIsLoading(false);
 			})
 			.catch(err => console.log(err));
 	}, []);
@@ -63,70 +67,110 @@ const Vote = props => {
 
 	return (
 		<div>
-			<RegisterToVote />
-			<h2>Upcoming Elections</h2>
-			{federalElection ? (
-				<div>
-					<h2>{federalElection.name}:</h2>{" "}
-					<Moment format="MMMM Do YYYY">{federalElection.electionDay}</Moment>
+			{isLoading ? (
+				<div
+					style={{
+						height: "100vh",
+						display: "flex",
+						justifyContent: "center",
+						alignItems: "center"
+					}}
+				>
+					<Loader
+						type="CradleLoader"
+						// color="#00BFFF"
+						height={100}
+						width={100}
+						// timeout={3000}
+					/>
 				</div>
-			) : null}
-			{stateElections ? (
-				stateElections.electionAdministrationBody ? (
-					<div>
-						<h2>Upcoming Elections</h2>
-						<h2>{stateElections.electionAdministrationBody.name}</h2>
-						<p>
-							More Info:{" "}
-							<a
-								target="_blank"
-								rel="noopener"
-								href={stateElections.electionAdministrationBody.electionInfoUrl}
-							>
-								{stateElections.electionAdministrationBody.electionInfoUrl}
-							</a>
-						</p>
-						{stateElections.local_jurisdiction ? (
+			) : (
+				<>
+					<RegisterToVote />
+					<h2>Upcoming Elections</h2>
+					{federalElection ? (
+						<div>
+							<h2>{federalElection.name}:</h2>{" "}
+							<Moment format="MMMM Do YYYY">
+								{federalElection.electionDay}
+							</Moment>
+						</div>
+					) : null}
+					{stateElections ? (
+						stateElections.electionAdministrationBody ? (
 							<div>
-								<h2>
-									{
-										stateElections.local_jurisdiction.electionAdministrationBody
-											.name
-									}
-								</h2>
+								<h2>Upcoming Elections</h2>
+								<h2>{stateElections.electionAdministrationBody.name}</h2>
 								<p>
 									More Info:{" "}
 									<a
 										target="_blank"
 										rel="noopener"
 										href={
-											stateElections.local_jurisdiction
-												.electionAdministrationBody.electionInfoUrl
+											stateElections.electionAdministrationBody.electionInfoUrl
 										}
 									>
-										{
-											stateElections.local_jurisdiction
-												.electionAdministrationBody.electionInfoUrl
-										}
+										{stateElections.electionAdministrationBody.electionInfoUrl}
 									</a>
 								</p>
+								{stateElections.local_jurisdiction ? (
+									<div>
+										<h2>
+											{
+												stateElections.local_jurisdiction
+													.electionAdministrationBody.name
+											}
+										</h2>
+										<p>
+											More Info:{" "}
+											<a
+												target="_blank"
+												rel="noopener"
+												href={
+													stateElections.local_jurisdiction
+														.electionAdministrationBody.electionInfoUrl
+												}
+											>
+												{
+													stateElections.local_jurisdiction
+														.electionAdministrationBody.electionInfoUrl
+												}
+											</a>
+										</p>
+									</div>
+								) : null}
 							</div>
-						) : null}
-					</div>
-				) : null
-			) : null}
-			{geoCodeAddress ? (
-				<>
-					<h2>Looking For Where to Vote?</h2>
-					<GoogleMapComponent
-						pollingLocation={pollingLocation[0].address}
-						formatedLocation={pollingFormated}
-						lat={geoCodeAddress.lat}
-						lng={geoCodeAddress.lng}
-					/>
+						) : null
+					) : null}
+					{geoCodeAddress ? (
+						<>
+							<h2>Looking For Where to Vote?</h2>
+							<GoogleMapComponent
+								pollingLocation={pollingLocation[0].address}
+								formatedLocation={pollingFormated}
+								lat={geoCodeAddress.lat}
+								lng={geoCodeAddress.lng}
+							/>
+						</>
+					) : (
+						<div
+							style={{
+								height: "100%",
+								display: "flex",
+								justifyContent: "center",
+								alignItems: "center"
+							}}
+						>
+							<Loader
+								type="TailSpin"
+								color="#BC051B"
+								height={75}
+								width={75}
+								// timeout={3000}
+							/>
+						</div>
+					)}
 				</>
-			) : (
-				"loading Google Maps"
 			)}
 		</div>
 	);

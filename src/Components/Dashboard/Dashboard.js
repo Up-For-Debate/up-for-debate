@@ -3,13 +3,17 @@ import React, { useState } from "react";
 import WhereToVotePopup from "../Vote/WhereToVotePopup";
 import Representatives from "../Representative/Representatives";
 import CountyMap from "../CountyMap/CountyMap";
+import Loader from "react-loader-spinner";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+
 import { Grid, Paper, Button } from "@material-ui/core";
 import { useTheme, makeStyles } from "@material-ui/core/styles";
 import RegisterToVote from "../RegisterToVote/RegisterToVote";
-import './Dashboard.scss'
+import "./Dashboard.scss";
 
 const Dashboard = () => {
 	const [displayPopup, setDisplayPopup] = useState(false);
+	const [isLoading, setIsLoading] = useState(true);
 	const theme = useTheme();
 	const useStyles = makeStyles({
 		paper: {
@@ -22,41 +26,66 @@ const Dashboard = () => {
 	const classes = useStyles();
 	console.log(displayPopup);
 	return (
-		<Grid
-			container
-			className="dashboard"
-			theme={theme}
-			style={{ backgroundColor: theme.palette.primary.light }}
-			spacing={3}
-		>
-			<Grid item xs={12} className="link-area">
-				<Paper
-					theme={theme}
-					elevation={3}
-					style={{ backgroundColor: theme.palette.primary.dark }}
-					className={classes.paper}
+		<>
+			{isLoading ? (
+				<div
+					style={{
+						height: "100vh",
+						display: "flex",
+						justifyContent: "center",
+						alignItems: "center"
+					}}
 				>
-					<RegisterToVote />
-					<Button
-						variant="contained"
-						color="secondary"
-						onClick={() => setDisplayPopup(!displayPopup)}
-					>
-						Where to vote
-					</Button>
+					<Loader
+						type="CradleLoader"
+						// color="#00BFFF"
+						height={100}
+						width={100}
+						// timeout={3000}
+					/>
+					<Representatives setIsLoading={setIsLoading} isLoading={isLoading} />
+				</div>
+			) : (
+				<Grid
+					container
+					className="dashboard"
+					theme={theme}
+					style={{ backgroundColor: theme.palette.primary.light }}
+					spacing={3}
+				>
+					<Grid item xs={12} className="link-area">
+						<Paper
+							theme={theme}
+							elevation={3}
+							style={{ backgroundColor: theme.palette.primary.dark }}
+							className={classes.paper}
+						>
+							<RegisterToVote />
+							<Button
+								variant="contained"
+								color="secondary"
+								onClick={() => setDisplayPopup(!displayPopup)}
+							>
+								Where to vote
+							</Button>
 
-					{displayPopup ? (
-						<WhereToVotePopup setDisplayPopup={setDisplayPopup} />
-					) : null}
-				</Paper>
-			</Grid>
-			<Grid item sm={12} md={8} className="rep-area">
-				<Representatives />
-			</Grid>
-			<Grid item sm={12} md={4} className="map-area" >
-				<CountyMap />
-			</Grid>
-		</Grid>
+							{displayPopup ? (
+								<WhereToVotePopup setDisplayPopup={setDisplayPopup} />
+							) : null}
+						</Paper>
+					</Grid>
+					<Grid item sm={12} md={8} className="rep-area">
+						<Representatives
+							setIsLoading={setIsLoading}
+							isLoading={isLoading}
+						/>
+					</Grid>
+					<Grid item sm={12} md={4} className="map-area">
+						<CountyMap />
+					</Grid>
+				</Grid>
+			)}
+		</>
 	);
 };
 
