@@ -76,7 +76,7 @@ function Map({
 				<svg className="map" ref={svgRef}></svg>
 			</div>
 			{selectedState ? (
-				<style>{`.map{ width: 33vw; height: 30vh;} #${stateSelected}{stroke: navyblue; stroke-width: 4px;} .explore-map{grid-column: 3} .explore-reps{display: block}`}</style>
+				<style>{`.map{ width: 33vw; height: 30vh;} #${stateSelected}{stroke: navyblue; stroke-width: 4px; fill: darkgrey;} .explore-map{grid-column: 3} .explore-reps{display: block}`}</style>
 			) : (
 				<></>
 			)}
