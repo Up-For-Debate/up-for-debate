@@ -99,7 +99,7 @@ const Representatives = props => {
 						</Grid>
 						<style>{`#${filterRepName(
 							rep.title
-						)}-county{fill: tomato;}`}</style>
+						)}-county{fill: #BC051B;}`}</style>
 					</>
 				);
 			});
