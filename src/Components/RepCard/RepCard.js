@@ -11,6 +11,7 @@ import FacebookIcon from "@material-ui/icons/Facebook";
 import axios from "axios";
 
 const useStyles = makeStyles({
+<<<<<<< HEAD
   root: {
     height: 325
   },
@@ -20,6 +21,19 @@ const useStyles = makeStyles({
     marginTop: "10px",
     backgroundSize: "contain"
   }
+=======
+	root: {
+		height: 325,
+		background: 'whitesmoke',
+		marginLeft: 10
+	},
+	media: {
+		height: "125px",
+		width: "100%",
+		marginTop: "10px",
+		backgroundSize: "contain"
+	}
+>>>>>>> master
 });
 
 const RepCard = props => {
