@@ -12,7 +12,9 @@ import axios from "axios";
 
 const useStyles = makeStyles({
 	root: {
-		height: 325
+		height: 325,
+		background: 'whitesmoke',
+		marginLeft: 10
 	},
 	media: {
 		height: "125px",
