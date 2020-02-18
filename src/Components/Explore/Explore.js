@@ -9,19 +9,22 @@ const Explore = () => {
 
   return (
     <>
-      Explore
-    <div className="explore-main">
-      <div className="explore-reps">
-        <Representatives />
+      <div className="explore-header">
+        <h1>Explore</h1>
       </div>
-      <div className="explore-map">
-        <Map
-          states={states}
-          stateSelected={stateSelected}
-          setStateSelected={setStateSelected}
-        />
+      <br />
+      <div className="explore-main">
+        <div className="explore-reps">
+          <Representatives />
+        </div>
+        <div className="explore-map">
+          <Map
+            states={states}
+            stateSelected={stateSelected}
+            setStateSelected={setStateSelected}
+          />
+        </div>
       </div>
-    </div>
     </>
   );
 };
