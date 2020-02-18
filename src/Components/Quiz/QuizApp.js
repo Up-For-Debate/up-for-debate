@@ -58,7 +58,7 @@ class QuizApp extends Component {
   }
 
   handleAnswerSelected(event) {
-    console.log(event.currentTarget.value);
+    // console.log(event.currentTarget.value);
     this.setUserAnswer(event.currentTarget.value);
 
     if (this.state.questionId < QuizQuestions.length) {

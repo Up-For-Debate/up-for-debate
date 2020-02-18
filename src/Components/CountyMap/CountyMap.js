@@ -14,7 +14,7 @@ const CountyMap = props => {
     return string;
   };
 
-  console.log(props);
+  // console.log(props);
   const svgRef = useRef();
   const wrapperRef = useRef();
   let dimensions = useResizeObserver(wrapperRef);
@@ -45,7 +45,7 @@ const CountyMap = props => {
       feature => feature.properties.STATEFP === selectedStateNum
     );
 
-    console.log(selectedState);
+    // console.log(selectedState);
 
     const svg = select(svgRef.current);
     const reducedFeatures = counties.features.filter(

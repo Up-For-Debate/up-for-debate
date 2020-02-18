@@ -8,16 +8,16 @@ const RepContainer = props => {
 	useEffect(() => {
 		if (props.person.divisionId.includes("county")) {
 			setCounty([...county, { ...props.person }]);
-			console.log(county);
+			// console.log(county);
 		} else if (props.person.divisionId.includes("state")) {
 			setState([...state, props.person]);
-			console.log(state);
+			// console.log(state);
 		} else {
 			setFederal([...federal, props.person]);
-			console.log(federal);
+			// console.log(federal);
 		}
 	}, []);
-	console.log(county);
+	// console.log(county);
 
 	// if (props.person.divisionId.includes("county")) {
 	// 	console.log(props.person);

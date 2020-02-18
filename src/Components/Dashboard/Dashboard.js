@@ -28,7 +28,7 @@ const Dashboard = props => {
 		}
 	});
 	const classes = useStyles();
-	console.log(props.usState);
+	// console.log(props.usState);
 	if (props.usState === "") {
 		alert("Please Enter A Location");
 		props.history.push("/");

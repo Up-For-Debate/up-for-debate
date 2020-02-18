@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { withRouter, Redirect } from "react-router-dom";
 import { Card, CardActionArea } from "@material-ui/core";
-import CardActions from "@material-ui/core/CardActions";
+// import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
