@@ -4,7 +4,6 @@ import axios from "axios";
 import RegisterToVote from "../RegisterToVote/RegisterToVote";
 import Loader from "react-loader-spinner";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
-import { GoogleMap, LoadScript } from "@react-google-maps/api";
 import Moment from "react-moment";
 import { connect } from "react-redux";
 const { REACT_APP_GOOGLE_MAPS_KEY } = process.env;
@@ -36,7 +35,7 @@ const Vote = props => {
 			setFederalElection(elections.election);
 			destructurePollingLocation();
 			setPollingLocation(elections.pollingLocations);
-			console.log(elections.pollingLocations);
+			// console.log(elections.pollingLocations);
 		}
 	}, [elections]);
 	useEffect(() => {

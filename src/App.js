@@ -4,7 +4,7 @@ import Header from "./Components/Header/Header";
 import "./App.css";
 import CssBaseline from '@material-ui/core/CssBaseline'
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
-import { useTheme } from "@material-ui/core/styles";
+// import { useTheme } from "@material-ui/core/styles";
 
 function App() {
   const theme = createMuiTheme({

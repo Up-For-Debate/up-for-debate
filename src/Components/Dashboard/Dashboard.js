@@ -27,7 +27,7 @@ const Dashboard = () => {
 		}
 	});
 	const classes = useStyles();
-	console.log(displayPopup);
+	// console.log(displayPopup);
 	return (
 		<>
 			{isLoading ? (

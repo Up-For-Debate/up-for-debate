@@ -1,5 +1,5 @@
 const axios = require("axios");
-const express = require("express");
+// const express = require("express");
 const {
 	API_KEY,
 	CONSUMER_KEY,
@@ -7,8 +7,8 @@ const {
 	ACCESS_TOKEN,
 	TOKEN_SECRET
 } = process.env;
-var https = require("follow-redirects").https;
-var fs = require("fs");
+// var https = require("follow-redirects").https;
+// var fs = require("fs");
 var Twit = require("twit");
 var T = new Twit({
 	consumer_key: CONSUMER_KEY,
@@ -24,7 +24,7 @@ module.exports = {
 				address
 			}
 		}
-		console.log(req.session.user, 'getRepresentatives')
+		// console.log(req.session.user, 'getRepresentatives')
 		// console.log(address)
 		const representatives = await axios.get(
 			`https://www.googleapis.com/civicinfo/v2/representatives?key=${API_KEY}&address=${address === `City  State` ? req.session.user.address : address}}`
@@ -37,7 +37,7 @@ module.exports = {
 		T.get("users/show", { screen_name: `${handle}` }, function(
 			err,
 			data,
-			response
+			// response
 		) {
 			let profileImage = data.profile_image_url_https;
 			if (profileImage) {
@@ -54,12 +54,12 @@ module.exports = {
 	},
 	setAddress: (req,res) => {
 		const {address }  = req.query
-		console.log('in setAddress')
-		console.log(address)
+		// console.log('in setAddress')
+		// console.log(address)
 		req.session.user = {
 			address
 		}
-		console.log(req.session.user, 'setAddress')
+		// console.log(req.session.user, 'setAddress')
 		// console.log(req.session.user)
 		res.status(200).send(req.session.user)
 		

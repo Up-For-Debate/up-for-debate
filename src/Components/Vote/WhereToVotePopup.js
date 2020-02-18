@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { setStreetAddressZipcode } from "../../redux/addressReducer";
 import { withRouter } from "react-router-dom";
-import { TextField, Button, IconButton, Icon } from "@material-ui/core";
+import { TextField, Button, IconButton } from "@material-ui/core";
 import ClearRoundedIcon from "@material-ui/icons/ClearRounded";
 
 const WhereToVotePopup = props => {

@@ -26,7 +26,6 @@ const useStyles = makeStyles({
 
 const RepCard = props => {
 	const classes = useStyles();
-	const [profilePicture, setProfilePicture] = useState("");
 	const [twitterPicture, setTwitterPicture] = useState("");
 	const [facebookPicture, setFacebookPicture] = useState("");
 	const [facebook, setFacebook] = useState(<></>);
