@@ -9,9 +9,20 @@ const WhereToVotePopup = props => {
 	const [zipcode, setZipcode] = useState("");
 	const [streetAddress, setStreetAddress] = useState("");
 
-	const handleWhereToVoteClick = () => {
-		props.setStreetAddressZipcode(streetAddress, zipcode);
-		props.history.push("/vote");
+	const handleWhereToVoteClick = async () => {
+		await props.setStreetAddressZipcode(streetAddress, zipcode);
+		await checkAddress();
+	};
+	const checkAddress = () => {
+		if (streetAddress && zipcode) {
+			props.history.push("/vote");
+		} else if (streetAddress) {
+			alert("Please Fill In Your Zipcode");
+		} else if (zipcode) {
+			alert("Please Fill In Your Address");
+		} else {
+			alert("Please Fill In Your Address and Zipcode");
+		}
 	};
 
 	return (
