@@ -1,20 +1,28 @@
 body {
   margin: 0;
   padding: 0;
-  background: #eee;
-  font-family: sans-serif;
+  background: grey;
 }
 
 .app-header {
   height: 9vh;
   width: 100vw;
-  background-color: pink;
+  background-color: #182141;
+  color: white;
+  font-size: 1.2rem;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Merriweather", serif;
 }
 
 .container {
   position: relative;
-  max-width: 800px;
-  margin: 0 auto;
+  max-width: 55vw;
+  /* margin: 0 auto; */
+  margin-top: 15;
   background: #fff;
   border-radius: 3px;
 }
@@ -22,6 +30,7 @@ body {
 @media (min-width: 769px) {
   .container {
     margin: 2.5rem auto;
+    font-family: "Mulli", sans-serif;
   }
 }
 
@@ -40,8 +49,11 @@ body {
 /* QuestionCount Component */
 .questionCount {
   padding: 1.5rem 2.5rem 0;
-  font-size: 14px;
+  font-size: 16px;
+  font-family: "Mulli", sans-serif;
 }
+
+.span
 
 /* Question Component */
 .question {
@@ -73,7 +85,7 @@ body {
 
 .radioCustomLabel {
   position: relative;
-  width: 100%;
+  width: 90%;
   margin: 0;
   padding: 1.5rem 2.5rem 1.5rem 5rem;
   font-size: 16px;
@@ -97,7 +109,8 @@ body {
 
 .radioCustomButton:checked ~ .radioCustomLabel:before {
   content: "";
-  background: #8bc53f url(../../assets/icons/ufd-image.png) no-repeat;
+  background: url("https://cdn1.vectorstock.com/i/1000x1000/15/05/green-tick-checkmark-icon-vector-22691505.jpg")
+    no-repeat;
   background-size: 27px;
   border-color: #8bc53f;
 }

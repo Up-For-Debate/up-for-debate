@@ -129,7 +129,11 @@ class QuizApp extends Component {
   render() {
     return (
       <div className="App">
-        <div className="app-header">Which Way Do You Lean Politically?</div>
+        <div className="app-header">
+          <h1 className="app-header-container">
+            Which Way Do You Lean Politically?
+          </h1>
+        </div>
         {this.state.result ? this.renderResult() : this.renderQuiz()}
       </div>
     );

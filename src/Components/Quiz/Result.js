@@ -14,7 +14,8 @@ function Result(props) {
       transitionAppearTimeout={500}
     >
       <div>
-        You lean <strong>{props.quizResult}</strong>.
+        From what you answered, it seems that you lean towards{" "}
+        <strong>{props.quizResult}</strong>.
       </div>
     </ReactCSSTransitionGroup>
   );
