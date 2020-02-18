@@ -19,13 +19,15 @@ function App() {
   });
 
   return (
+    <>
+    <CssBaseline />
     <ThemeProvider theme={theme}>
-      <CssBaseline />
       <div className="App">
         <Header id="header" />
         {routes}
       </div>
     </ThemeProvider>
+    </>
   );
 }
 

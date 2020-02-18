@@ -9,7 +9,6 @@ const Explore = () => {
 
   return (
     <>
-      Explore
     <div className="explore-main">
       <div className="explore-reps">
         <Representatives />
