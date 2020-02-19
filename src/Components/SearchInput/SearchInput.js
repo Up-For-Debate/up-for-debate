@@ -75,7 +75,7 @@ const SearchInput = props => {
 					<Paper component="form" onSelect={e => handleSelect(e)}>
 						<TextField
 							{...params}
-							label="City, State"
+							label="Enter your City and State"
 							id="cityState"
 							variant="filled"
 							style={{ width: 300 }}
