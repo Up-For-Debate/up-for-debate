@@ -22,15 +22,29 @@ const Landing = () => {
   return (
     <div className="landing-background">
       <Paper className={classes.paper} id="landing-paper" elevation={5}>
-        <h1
-          className="landing-header"
-          style={{ marginTop: "15vh", paddingBottom: "2%" }}
-        >
-          Up for Debate
-        </h1>
-        <center className="landing-header" style={{fontSize: '16px', fontFamily: 'Muli', color: '#37474F', fontWeight: 700}}>The one stop for finding all of your government representative information.</center>
-        <br />
-        <SearchInput />
+        <Paper 
+          className="input-holder" 
+          elevation={3} 
+          style={{
+            display: 'flex', 
+            flexDirection: "column", 
+            justifyContent:"center", 
+            alignItems:'center',
+            backgroundColor: "#ebebeb",
+            marginTop: '15vh',
+            height: '50%',
+            width: '62%'
+            }}>
+          <h1
+            className="landing-header"
+            style={{ marginTop:'-5%', marginBottom: "5%" }}
+            >
+            Up for Debate
+          </h1>
+          <center className="landing-header" style={{fontSize: '16px', fontFamily: 'Muli', color: '#37474F', fontWeight: 700}}>The one stop for finding all of your government representative information.</center>
+          <br />
+          <SearchInput />
+        </Paper>
 
       </Paper>
 
