@@ -1,7 +1,8 @@
 .landing-background {
   height: 94vh;
   width: 100vw;
-  background-image: url("https://res.cloudinary.com/dx8jjuurn/image/upload/v1581444345/Untitled_design_2_tf3p7e.png");
+  background-image: url("https://res.cloudinary.com/dx8jjuurn/image/upload/v1582133451/joe-woods-4Zaq5xY5M_c-unsplash_1_l8ji29.jpg");
+  // background-image: url("https://res.cloudinary.com/dx8jjuurn/image/upload/v1582133451/joe-woods-4Zaq5xY5M_c-unsplash_1_l8ji29.jpg");
   background-position: center;
   background-size: cover;
   display: flex;
@@ -12,9 +13,13 @@
 .landing-header {
   font-family: "Merriweather", serif;
   font-size: 2.5rem;
-  color: #182141;
+  color: #102027;
+  word-wrap: break-word;
+
 }
 
 #landing-paper {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(16, 32, 39, 0.2);
 }
+
+// 102027
