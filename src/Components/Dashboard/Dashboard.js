@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 // import { HashLink as Link } from "react-router-hash-link";
 import WhereToVotePopup from "../Vote/WhereToVotePopup";
 import Representatives from "../Representative/Representatives";
@@ -11,6 +12,7 @@ import { Grid, Paper, Button } from "@material-ui/core";
 import { useTheme, makeStyles } from "@material-ui/core/styles";
 import RegisterToVote from "../RegisterToVote/RegisterToVote";
 import "./Dashboard.scss";
+import { getCityState } from "../../redux/addressReducer";
 
 const Dashboard = props => {
 	const [displayPopup, setDisplayPopup] = useState(false);
@@ -27,12 +29,10 @@ const Dashboard = props => {
 			alignItems: "center"
 		}
 	});
+
 	const classes = useStyles();
 	// console.log(props.usState);
-	if (props.usState === "") {
-		alert("Please Enter A Location");
-		props.history.push("/");
-	}
+
 	return (
 		<>
 			{isLoading ? (
