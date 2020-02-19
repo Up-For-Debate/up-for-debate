@@ -59,11 +59,12 @@ const Dashboard = props => {
 					className="dashboard"
 					theme={theme}
 					style={{ backgroundColor: '#ebebeb', marginTop: "6vh" }}
-					spacing={3}
+					spacing={0}
 				>
 					<Grid item xs={12} className="link-area">
 						<Paper
 							theme={theme}
+							square
 							elevation={3}
 							style={{ backgroundColor: theme.palette.primary.dark }}
 							className={classes.paper}
