@@ -58,7 +58,7 @@ function Map({
       .duration(1500)
       //css classes and id
       .attr("class", "state")
-      .attr("id", feature => feature.properties.NAME)
+      .attr("id", feature => feature.properties.NAME.replace(' ', '-'))
       //sets dimensions
       .attr("d", feature => pathGenerator(feature));
     if (stateSelected) {
@@ -71,8 +71,8 @@ function Map({
       <div className="map-wrapper map" ref={wrapperRef}>
         <svg className="map" ref={svgRef}></svg>
       </div>
-      {selectedState ? (
-        <style>{`.map{ width: 33vw; height: 30vh;} #${stateSelected}{stroke: navyblue; stroke-width: 4px; fill: darkgrey;} .explore-map{grid-column: 3} .explore-reps{display: block}`}</style>
+      {stateSelected ? (
+        <style>{`.map{ width: 33vw; height: 30vh;} #${ stateSelected.replace(' ', '-') }{stroke: navyblue; stroke-width: 4px; fill: darkgrey;} .explore-map{grid-column: 3} .explore-reps{display: block}`}</style>
       ) : (
         <></>
       )}
