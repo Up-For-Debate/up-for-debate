@@ -6,6 +6,7 @@ import states from "../../assets/states.json";
 import stateNumbers from "./stateNumber.js";
 import { connect } from "react-redux";
 import axios from "axios";
+import { withRouter } from "react-router-dom";
 
 const CountyMap = props => {
 	const filterCountyName = countyName => {
@@ -28,18 +29,28 @@ const CountyMap = props => {
 				).number
 			);
 		} else {
-			axios.get("/api/address").then(res => {
-				const split = res.data.split(" ");
-				const splitIndex = split.indexOf("State");
-				split.splice(0, splitIndex + 1);
-				const back = split.toString().replace(",", " ");
-				setSelectedStateNum(
-					stateNumbers.find(
-						element => element.state.toLowerCase() === back.toLowerCase()
-					).number
-				);
-			});
+			axios
+				.get("/api/address")
+				.then(res => {
+					console.log("hi");
+					console.log(res.data);
+					const split = res.data.split(" ");
+					const splitIndex = split.indexOf("State");
+					split.splice(0, splitIndex + 1);
+					const back = split.toString().replace(",", " ");
+					setSelectedStateNum(
+						stateNumbers.find(
+							element => element.state.toLowerCase() === back.toLowerCase()
+						).number
+					);
+				})
+				.catch(err => {
+					console.log("hello");
+					alert("Please Enter An Address");
+					props.history.push("/");
+				});
 		}
+
 		const selectedState = states.features.filter(
 			feature => feature.properties.STATEFP === selectedStateNum
 		);
@@ -94,4 +105,4 @@ const mapStateToProps = state => {
 	};
 };
 
-export default connect(mapStateToProps)(CountyMap);
+export default connect(mapStateToProps)(withRouter(CountyMap));
