@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import { connect } from 'react-redux'
-import { Paper, Grid, Button } from '@material-ui/core'
+import { Button } from '@material-ui/core'
 import { withRouter } from 'react-router-dom'
 import axios from 'axios'
 
@@ -9,7 +9,7 @@ const RegisterToVote = (props) => {
   const [ linkUrl, setLinkUrl ] = useState('')
 
   const checkState = () => {
-    console.log('fired the check state')
+    // console.log('fired the check state')
     axios.get(`/api/states/${props.usState}`)
       .then( res => setLinkUrl(res.data))
       .catch( err => console.log(err) )
