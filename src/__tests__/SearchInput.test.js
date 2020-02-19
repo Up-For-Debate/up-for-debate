@@ -24,7 +24,7 @@ it(`SearchInput will originally display the string 'City, State'`, () => {
       </Provider>
     </HashRouter>
   )
-  expect(container.textContent).toContain('City, State')
+  expect(container.textContent).toContain("Enter your City and State")
 
 })
 
