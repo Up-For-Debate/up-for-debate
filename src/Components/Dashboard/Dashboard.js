@@ -62,7 +62,7 @@ const Dashboard = props => {
 						backgroundColor: "#ebebeb",
 						marginTop: "6vh"
 					}}
-					spacing={3}
+					spacing={0}
 				>
 					<Grid item xs={12} className="link-area">
 						<Paper

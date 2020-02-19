@@ -129,12 +129,14 @@ const Representatives = props => {
 					</Grid>
 				);
 			});
-		console.log(countyReps);
 		return (
 			<Grid container spacing={2}>
 				<Grid item xs={12}>
 					{countyReps[0] ? (
-						<Button variant="outlined" style={{ marginLeft: "10px" }}>
+						<Button
+							variant="outlined"
+							style={{ marginTop: "7%", marginLeft: "10px" }}
+						>
 							<Link
 								to="#county-rep"
 								style={{ color: "#1d272d", textDecoration: "inherit" }}
@@ -144,7 +146,10 @@ const Representatives = props => {
 						</Button>
 					) : null}
 
-					<Button variant="outlined" style={{ marginLeft: "10px" }}>
+					<Button
+						variant="outlined"
+						style={{ marginTop: "7%", marginLeft: "10px" }}
+					>
 						<Link
 							to="#state-rep"
 							style={{ color: "#1d272d", textDecoration: "inherit" }}
@@ -152,7 +157,10 @@ const Representatives = props => {
 							State Info
 						</Link>
 					</Button>
-					<Button variant="outlined" style={{ marginLeft: "10px" }}>
+					<Button
+						variant="outlined"
+						style={{ marginTop: "7%", marginLeft: "10px" }}
+					>
 						<Link
 							to="#federal-rep"
 							style={{ color: "#1d272d", textDecoration: "inherit" }}
