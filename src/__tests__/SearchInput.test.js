@@ -24,7 +24,7 @@ it(`SearchInput will originally display the string 'City, State'`, () => {
       </Provider>
     </HashRouter>
   )
-  expect(container.textContent).toContain('City, State')
+  expect(container.textContent).toContain("Enter your City and State")
 
 })
 
@@ -38,6 +38,7 @@ it('SearchInput will not allow submission without city and state', () => {
   )
   const button = getByTestId('submit-button')
   fireEvent.click(button)
+  
   expect(container.textContent).toContain('Please input valid city')
 
 })

@@ -16,7 +16,7 @@ import HelpIcon from '@material-ui/icons/Help';
 const Header = props => {
   const [drawerState, setDrawerState] = useState({right: false})
 
-  const theme = useTheme();
+  // const theme = useTheme();
   const useStyles = makeStyles({
     paper: {
 			height: "6vh",

@@ -7,19 +7,17 @@ import Explore from "./Components/Explore/Explore";
 import Header from "./Components/Header/Header";
 import Landing from "./Components/Landing/Landing";
 import RegisterToVote from "./Components/RegisterToVote/RegisterToVote";
-import RepCard from "./Components/RepCard/RepCard";
+
 import Representatives from "./Components/Representative/Representatives";
 import SearchInput from "./Components/SearchInput/SearchInput";
 import QuizApp from "./Components/Quiz/QuizApp";
 import Vote from "./Components/Vote/Vote";
-import GoogleMapComponent from "./Components/Vote/GoogleMapComponent";
+
 // import StateMap from "./Components/Vote/Vote";
 
 export default (
   <Switch>
     <Route exact path="/" component={Landing} />
-    {/* <Route path="/repcard" component={RepCard} /> */}
-    {/* <Route path="/statemap" component={StateMap} /> */}
     <Route path="/countymap" component={CountyMap} />
     <Route path="/Dashboard" component={Dashboard} />
     <Route path="/explore" component={Explore} />

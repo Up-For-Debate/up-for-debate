@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 // import { HashLink as Link } from "react-router-hash-link";
 import WhereToVotePopup from "../Vote/WhereToVotePopup";
 import Representatives from "../Representative/Representatives";
@@ -11,6 +12,7 @@ import { Grid, Paper, Button } from "@material-ui/core";
 import { useTheme, makeStyles } from "@material-ui/core/styles";
 import RegisterToVote from "../RegisterToVote/RegisterToVote";
 import "./Dashboard.scss";
+import { getCityState } from "../../redux/addressReducer";
 
 const Dashboard = props => {
 	const [displayPopup, setDisplayPopup] = useState(false);
@@ -27,12 +29,10 @@ const Dashboard = props => {
 			alignItems: "center"
 		}
 	});
+
 	const classes = useStyles();
-	console.log(props.usState);
-	if (props.usState === "") {
-		alert("Please Enter A Location");
-		props.history.push("/");
-	}
+	// console.log(props.usState);
+
 	return (
 		<>
 			{isLoading ? (
@@ -58,12 +58,16 @@ const Dashboard = props => {
 					container
 					className="dashboard"
 					theme={theme}
-					style={{ backgroundColor: '#ebebeb', marginTop: "6vh" }}
-					spacing={3}
+					style={{
+						backgroundColor: "#ebebeb",
+						marginTop: "6vh"
+					}}
+					spacing={0}
 				>
 					<Grid item xs={12} className="link-area">
 						<Paper
 							theme={theme}
+							square
 							elevation={3}
 							style={{ backgroundColor: theme.palette.primary.dark }}
 							className={classes.paper}
