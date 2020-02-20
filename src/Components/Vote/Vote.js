@@ -84,10 +84,11 @@ const Vote = props => {
           />
         </div>
       ) : (
-        <div>
-          <div style={{ marginTop: "10px", marginLeft: "5px" }}>
+        <div style={{ backgroundColor: "#d9d9d9" }}>
+          <div style={{ paddingTop: "10px", marginLeft: "10px" }}>
             <RegisterToVote />
           </div>
+
           <div
             style={{
               height: "10vh",
@@ -95,111 +96,152 @@ const Vote = props => {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              fontFamily: "Merriweather"
+              fontFamily: "Merriweather",
+              fontSize: "1.5rem"
             }}
           >
             <h1>Voting Information in Your Area</h1>
           </div>
-          <Paper>
-            <div
+          <div
+            style={{
+              height: "27vh",
+              width: "100vw",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center"
+            }}
+          >
+            <Paper
               style={{
-                fontFamily: "Merriweather",
-                marginLeft: "2%",
-                height: "5vh",
-                width: "100vw"
+                height: "20vh",
+                width: "60vw",
+                display: "flex",
+                justifyContent: "space-around",
+                alignItems: "center",
+                alignContent: "center"
               }}
             >
-              <h2>Upcoming Federal Elections</h2>
-            </div>
-            {federalElection ? (
-              <div style={{ marginLeft: "2%" }}>
-                <h2>{federalElection.name}:</h2>{" "}
-                <Moment format="MMMM Do YYYY">
-                  {federalElection.electionDay}
-                </Moment>
+              <div>
+                <h2 style={{ fontFamily: "Merriweather" }}>
+                  Upcoming Federal Elections -
+                </h2>
+                <br />
+                {federalElection ? (
+                  <div>
+                    <h3>{federalElection.name}:</h3>{" "}
+                    <Moment format="MMMM Do YYYY">
+                      {federalElection.electionDay}
+                    </Moment>
+                  </div>
+                ) : null}{" "}
               </div>
-            ) : null}
-            {stateElections ? (
-              stateElections.electionAdministrationBody ? (
-                <div>
-                  <h2 style={{ fontFamily: "Merriweather" }}>
-                    Upcoming State Elections
-                  </h2>
-                  <h2>{stateElections.electionAdministrationBody.name}</h2>
-                  <p>
-                    More Info:{" "}
-                    <a
-                      target="_blank"
-                      rel="noopener"
-                      href={
-                        stateElections.electionAdministrationBody
-                          .electionInfoUrl
-                      }
-                    >
-                      {
-                        stateElections.electionAdministrationBody
-                          .electionInfoUrl
-                      }
-                    </a>
-                  </p>
-                  {stateElections.local_jurisdiction ? (
-                    <div>
-                      <h2>
-                        {
-                          stateElections.local_jurisdiction
-                            .electionAdministrationBody.name
+              {stateElections ? (
+                stateElections.electionAdministrationBody ? (
+                  <div>
+                    <h2 style={{ fontFamily: "Merriweather" }}>
+                      Upcoming State Elections -
+                    </h2>
+                    <br />
+                    <h3>{stateElections.electionAdministrationBody.name}:</h3>
+                    <p>
+                      More Info:{" "}
+                      <a
+                        target="_blank"
+                        rel="noopener"
+                        href={
+                          stateElections.electionAdministrationBody
+                            .electionInfoUrl
                         }
-                      </h2>
-                      <p>
-                        More Info:{" "}
-                        <a
-                          target="_blank"
-                          rel="noopener"
-                          href={
-                            stateElections.local_jurisdiction
-                              .electionAdministrationBody.electionInfoUrl
-                          }
-                        >
+                      >
+                        {
+                          stateElections.electionAdministrationBody
+                            .electionInfoUrl
+                        }
+                      </a>
+                    </p>
+                    {stateElections.local_jurisdiction ? (
+                      <div>
+                        <h2>
                           {
                             stateElections.local_jurisdiction
-                              .electionAdministrationBody.electionInfoUrl
+                              .electionAdministrationBody.name
                           }
-                        </a>
-                      </p>
-                    </div>
-                  ) : null}
-                </div>
-              ) : null
-            ) : null}
-            {geoCodeAddress ? (
-              <>
-                <h2>Looking For Where to Vote?</h2>
+                        </h2>
+                        <p>
+                          More Info:{" "}
+                          <a
+                            target="_blank"
+                            rel="noopener"
+                            href={
+                              stateElections.local_jurisdiction
+                                .electionAdministrationBody.electionInfoUrl
+                            }
+                          >
+                            {
+                              stateElections.local_jurisdiction
+                                .electionAdministrationBody.electionInfoUrl
+                            }
+                          </a>
+                        </p>
+                      </div>
+                    ) : null}
+                  </div>
+                ) : null
+              ) : null}{" "}
+            </Paper>{" "}
+          </div>
+          {geoCodeAddress ? (
+            <>
+              <div
+                style={{
+                  height: "5vh",
+                  width: "100vw",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  flexDirection: "column"
+                }}
+              >
+                <h2 style={{ fontFamily: "Merriweather", fontSize: "1.7rem" }}>
+                  Where to Vote
+                </h2>
+              </div>
+
+              <div
+                style={{
+                  height: "400px",
+                  width: "100vw",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center"
+                }}
+              >
                 <GoogleMapComponent
                   pollingLocation={pollingLocation[0].address}
                   formatedLocation={pollingFormated}
                   lat={geoCodeAddress.lat}
                   lng={geoCodeAddress.lng}
                 />
-              </>
-            ) : (
-              <div
-                style={{
-                  height: "100%",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center"
-                }}
-              >
-                <Loader
-                  type="TailSpin"
-                  color="#BC051B"
-                  height={75}
-                  width={75}
-                  // timeout={3000}
-                />
               </div>
-            )}
-          </Paper>
+            </>
+          ) : (
+            <div
+              style={{
+                height: "100%",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center"
+              }}
+            >
+              <Loader
+                type="TailSpin"
+                color="#BC051B"
+                height={75}
+                width={75}
+                // timeout={3000}
+              />
+            </div>
+          )}
         </div>
       )}
     </div>
